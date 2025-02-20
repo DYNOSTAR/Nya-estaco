@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nya-Estaco Investment</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary-blue: #1E90FF; /* Dodger Blue */
+            --secondary-blue: #87CEEB; /* Sky Blue */
+            --dark-blue: #00008B; /* Dark Blue */
+            --light-blue: #E6F4F1; /* Very Light Blue */
+            --white: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--light-blue), var(--white));
+            color: var(--dark-blue);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--dark-blue);
+            padding: 10px 20px;
+            color: var(--white);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        /* Navigation */
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav ul li {
+            margin: 0;
+        }
+
+        .nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* About Us Content */
+        .about-content {
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-content img {
+            width: 300px; /* Adjust as needed */
+            height: auto;
+            margin-right: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            text-align: center;
+            padding: 20px;
+            color: var(--white);
+            margin-top: 40px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            margin-bottom: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-blue);
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Nya-Estaco Investment</h1>
+        <!-- Navigation -->
+        <div class="nav">
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- About Us Content -->
+    <div class="about-content">
+        <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Logo">
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>
+                Welcome to <strong>Nya-Estaco Investment</strong>, your trusted partner in quality products.
+                We specialize in providing high-quality cereals, flour, grains, animal feeds, and spices
+                to meet the needs of both wholesale and retail customers.
+            </p>
+            <p>
+                Our mission is to deliver the best quality products at competitive prices. We source our
+                products from trusted suppliers and ensure they meet the highest standards of quality and
+                freshness. Whether you're looking for maize, rice, wheat flour, or animal feeds, we have
+                you covered.
+            </p>
+            <p>
+                At Nya-Estaco, we believe in building long-term relationships with our customers. Our team
+                is dedicated to providing excellent service and ensuring your satisfaction. Thank you for
+                choosing Nya-Estaco Investment as your preferred supplier.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <p>Follow Us On: </p>
+            <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com" target="_blank">TikTok<i class="fab fa-tiktok"></i></a>
+            <a href="https://www.x.com" target="_blank">X<i class="fab fa-twitter"></i></a>
+        </div>
+        <p>Copyright &copy; Nya-Estaco.com</p>
+    </div>
+</body>
+</html>

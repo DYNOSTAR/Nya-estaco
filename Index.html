@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYA-ESTACO INVESTMENT</title>
+    <style>
+        :root {
+            --primary-blue: #1E90FF;
+            --dark-blue: #00008B;
+            --medium-blue: #343481;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom,
+                var(--dark-blue) 0%,
+                var(--dark-blue) 10%,
+                var(--white) 22%,
+                var(--white) 78%,
+                var(--medium-blue) 90%,
+                var(--dark-blue) 100%);
+            min-height: 100vh;
+            color: var(--white);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            height: 300px;
+        }
+
+        .logo-container img {
+            height: 120px;
+            width: auto;
+            margin-bottom: 15px;
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 0;
+            margin: 5px 0 15px;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .nav ul li a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            color: var(--dark-blue);
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 2.2rem;
+            color: var(--dark-blue);
+        }
+
+        .motto {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 0 0 30px;
+            color: var(--medium-blue);
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .slides {
+            display: none;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .slides img {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .slide-content {
+            position: static;
+            background: transparent;
+            padding: 15px 0;
+            margin-top: 10px;
+        }
+
+        .slide-content h3 {
+            color: var(--dark-blue);
+            font-size: 1.6rem;
+            text-shadow: none;
+            margin: 10px 0;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--medium-blue);
+            padding: 25px 20px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-info {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        /* Navigation Arrows */
+        .prev, .next {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            font-size: 35px;
+            color: var(--white);
+            cursor: pointer;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .prev:hover, .next:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        @keyframes fadeEffect {
+            from { opacity: 0.4; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="page-title">Nya-Estaco Stores</h1>
+            <p class="motto">Your Best Quality Partner</p>
+
+            <!-- Slideshow -->
+            <div class="slideshow-container">
+                <!-- Flour -->
+                <div class="slides">
+                    <img src="Flou pro.jpeg" alt="Flour Products">
+                    <div class="slide-content">
+                        <h3>Premium Flour Selection</h3>
+                    </div>
+                </div>
+
+                <!-- Grains -->
+                <div class="slides">
+                    <img src="Grain pro.jpeg" alt="Grains Products">
+                    <div class="slide-content">
+                        <h3>Quality Grains</h3>
+                    </div>
+                </div>
+
+                <!-- Cereals -->
+                <div class="slides">
+                    <img src="Cereal pro.jpeg" alt="Cereals Products">
+                    <div class="slide-content">
+                        <h3>Nutritious Cereals</h3>
+                    </div>
+                </div>
+
+                <!-- Spices -->
+                <div class="slides">
+                    <img src="spices pro.jpeg" alt="Spices Products">
+                    <div class="slide-content">
+                        <h3>Authentic Spices</h3>
+                    </div>
+                </div>
+
+                <!-- Animal Feeds -->
+                <div class="slides">
+                    <img src="animal feeds pro.jpeg" alt="Animal Feeds">
+                    <div class="slide-content">
+                        <h3>Nutritious Animal Feeds</h3>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="prev" onclick="changeSlide(-1)">❮</button>
+                <button class="next" onclick="changeSlide(1)">❯</button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Our Location</h3>
+                    <p>Nairobi CBD, Biashara Street</p>
+                    <p>P.O Box 12345-00100</p>
+                    <p>Nairobi, Kenya</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>Phone: +254 700 123 456</p>
+                    <p>Email: info@nya-estaco.co.ke</p>
+                    <p>Open: Mon-Sat 8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>Copyright &copy; 2023 Nya-Estaco Investment. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides');
+
+        function showSlides() {
+            slides.forEach(slide => slide.style.display = "none");
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].style.display = "block";
+            setTimeout(showSlides, 5000);
+        }
+
+        function changeSlide(n) {
+            slides.forEach(slide => slide.style.display = "none");
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            slides[slideIndex].style.display = "block";
+        }
+
+        showSlides();
+    </script>
+</body>
+</html>
