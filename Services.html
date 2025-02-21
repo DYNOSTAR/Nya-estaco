@@ -29,17 +29,16 @@
 
         /* Header */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             background: var(--dark-blue);
-            padding: 10px 20px;
+            padding: 40px;
             color: var(--white);
         }
 
-        .header img {
-            height: 100px; /* Adjust logo height */
-            width: 3000;
+        .logo-container img {
+            height: 120px;
+            width: auto;
+            margin-bottom: 10px;
         }
 
         .header h1 {
@@ -48,7 +47,14 @@
         }
 
         /* Navigation */
+        .nav {
+            background: var(--dark-blue);
+            padding: 15px;
+            text-align: center;
+            justify-content: center;
+        }
         .nav ul {
+            justify-content: center;
             list-style: none;
             padding: 0;
             display: flex;
@@ -81,7 +87,7 @@
 
         .services-content h2 {
             font-size: 2rem;
-            color: var(--primary-blue);
+            color: var(--black);
             text-align: center;
             margin-bottom: 40px;
         }
@@ -122,10 +128,10 @@
 
         /* Footer */
         .footer {
-            background: transparent;
+            background: var(--dark-blue);
             text-align: center;
             padding: 40px 20px 20px;
-            color: var(--dark-blue);
+            color: var(--white);
         }
 
         .footer p {
@@ -174,10 +180,11 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="logo">
-            <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Logo">
+        <div class="logo-container">
+            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
         </div>
         <h1>NYA-ESTACO STORES</h1>
+        <p>Your Trusted Partner in Quality Products</p>
         <!-- Navigation -->
         <div class="nav">
             <ul>
@@ -196,7 +203,7 @@
 
         <!-- Muthokoi Processing -->
         <div class="service-item">
-            <img src="muthokoi-processing.jpg" alt="Muthokoi Processing">
+            <img src="muthokoi.jpeg" alt="Muthokoi Processing">
             <div class="service-text">
                 <h3>Muthokoi Processing</h3>
                 <p>
@@ -209,7 +216,7 @@
 
         <!-- Milling -->
         <div class="service-item">
-            <img src="milling.jpg" alt="Milling">
+            <img src="mill.jpeg" alt="Milling">
             <div class="service-text">
                 <h3>Milling</h3>
                 <p>
@@ -222,7 +229,7 @@
 
         <!-- Grains Cleaning -->
         <div class="service-item">
-            <img src="grains-cleaning.jpg" alt="Grains Cleaning">
+            <img src="grainclean.jpeg" alt="Grains Cleaning">
             <div class="service-text">
                 <h3>Grains Cleaning</h3>
                 <p>
@@ -235,7 +242,7 @@
 
         <!-- Storage -->
         <div class="service-item">
-            <img src="storage.jpg" alt="Storage">
+            <img src="storage.jpeg" alt="Storage">
             <div class="service-text">
                 <h3>Storage</h3>
                 <p>
@@ -250,6 +257,14 @@
     <!-- Footer -->
     <div class="footer">
         <div class="social-icons">
+            <h3>Our Location</h3>
+                    <p>Nairobi, Old City Stadium, off factory street</p>
+                    <p>P.O Box 1748-00100</p>
+                    <p>Naivasha, Kenya</p>
+            <h3>Contact Us</h3>
+                    <p>Phone: +254 721 914 396</p>
+                    <p>Email: Nya-estaco@gmail.com</p>
+                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
             <p>Follow Us On: </p>
             <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com" target="_blank">TikTok<i class="fab fa-tiktok"></i></a>

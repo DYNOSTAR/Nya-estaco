@@ -30,29 +30,35 @@
 
         /* Header */
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 40px;
             background: var(--dark-blue);
-            padding: 10px 20px;
             color: var(--white);
+            text-align: center;
         }
+        .logo-container img {
+            height: 120px;
+            width: auto;
+            margin-bottom: 10px;
+            }
 
         .header h1 {
-            font-size: 2rem;
-            margin: 0;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
 
         /* Navigation */
+        .nav {
+            background: var(--dark-blue);
+            padding: 15px;
+            text-align: center;
+        }
+
         .nav ul {
             list-style: none;
             padding: 0;
             display: flex;
+            justify-content: center;
             gap: 20px;
-        }
-
-        .nav ul li {
-            margin: 0;
         }
 
         .nav ul li a {
@@ -67,7 +73,6 @@
         .nav ul li a:hover {
             background: rgba(255, 255, 255, 0.2);
         }
-
         /* About Us Content */
         .about-content {
             display: flex;
@@ -91,7 +96,7 @@
 
         .about-text h2 {
             font-size: 2rem;
-            color: var(--primary-blue);
+            color: #00000;
             margin-bottom: 20px;
         }
 
@@ -137,7 +142,11 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <h1>Nya-Estaco Investment</h1>
+        <div class="logo-container">
+            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+        </div>
+        <h1>Nya-Estaco Stores</h1>
+        <p>Your Trusted Partner in Quality Products</p>
         <!-- Navigation -->
         <div class="nav">
             <ul>
@@ -178,6 +187,14 @@
     <div class="footer">
         <!-- Social Media Icons -->
         <div class="social-icons">
+            <h3>Our Location</h3>
+                    <p>Nairobi, Old City Stadium, off factory street</p>
+                    <p>P.O Box 1748-00100</p>
+                    <p>Naivasha, Kenya</p>
+            <h3>Contact Us</h3>
+                    <p>Phone: +254 721 914 396</p>
+                    <p>Email: Nya-estaco@gmail.com</p>
+                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
             <p>Follow Us On: </p>
             <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com" target="_blank">TikTok<i class="fab fa-tiktok"></i></a>

@@ -22,7 +22,14 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--light-blue);
+            background: linear-gradient(to bottom,
+                var(--dark-blue) 0%,
+                var(--dark-blue) 10%,
+                var(--white) 20%,
+                var(--white) 80%,
+                var(--medium-blue) 90%,
+                var(--dark-blue) 100%);
+            min-height: 100vh;
             color: var(--dark-blue);
         }
 
@@ -39,16 +46,23 @@
             color: var(--white);
             text-align: center;
         }
+        .logo-container img {
+            height: 120px;
+            width: auto;
+            margin-bottom: 10px;
+            }
 
         .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
-
+        .header p {
+            margin-bottom: 2px;
+        }
         /* Navigation */
         .nav {
-            background: var(--primary-blue);
-            padding: 15px;
+            background: var(--dark-blue);
+            padding: 10px;
             text-align: center;
         }
 
@@ -67,9 +81,9 @@
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 25px;
             transition: background 0.3s ease;
         }
 
@@ -78,10 +92,13 @@
         }
 
         /* Product Categories */
+        .product-category {
+            margin-bottom: 40px;
+        }
         h2 {
             color: var(--primary-blue);
             text-align: Left;
-            margin: 30px 0;
+            margin: 25px 0;
             text-decoration: underline;
         }
 
@@ -131,7 +148,14 @@
             margin-top: 40px;
             color: var(--white);
         }
-
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
         .footer p {
             margin: 10px 0;
         }
@@ -158,8 +182,10 @@
 <body>
     <!-- Header -->
     <div class="header">
-        <h1>Nya-Estaco Investment</h1>
-        <p>Your Trusted Partner in Quality Products</p>
+        <div class="logo-container">
+            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+        </div>
+        <h1>Nya-Estaco Stores</h1>
         <p>For WholeSale and Retail Provisions</p>
     </div>
 
@@ -180,7 +206,7 @@
 
         <!-- Cereals Section -->
         <div class="product-category">
-            <h2>Cereals</h2>
+            <h2>1. Cereals</h2>
             <div class="product-list">
                 <div class="product">
                     <img src="download.jpeg" alt="Nyayo">
@@ -218,7 +244,7 @@
 
         <!-- Flour Section -->
         <div class="product-category">
-            <h2>Flour</h2>
+            <h2>2. Flour</h2>
             <div class="product-list">
                 <div class="product">
                     <img src="MF.jpeg" alt="Maize Flour">
@@ -250,7 +276,7 @@
 
         <!-- Grains Section -->
         <div class="product-category">
-            <h2>Grains</h2>
+            <h2>3. Grains</h2>
             <div class="product-list">
                 <div class="product">
                     <img src="maiz.jpeg" alt="Maize">
@@ -289,7 +315,7 @@
 
         <!-- Spices Section -->
         <div class="product-category">
-            <h2>Spices</h2>
+            <h2>4. Spices</h2>
             <div class="product-list">
                 <div class="product">
                     <img src="Chia.jpeg" alt="Chia Seeds">
@@ -321,7 +347,7 @@
 
         <!-- Animal Feeds Section -->
         <div class="product-category">
-            <h2>Animal Feeds</h2>
+            <h2>5. Animal Feeds</h2>
             <div class="product-list">
                 <div class="product">
                     <img src="Dairymeal.jpeg" alt="Dairy Meal">
@@ -361,6 +387,14 @@
     <!-- Footer -->
     <div class="footer">
         <div class="social-icons">
+            <h3>Our Location</h3>
+                    <p>Nairobi, Old City Stadium, off factory street</p>
+                    <p>P.O Box 1748-00100</p>
+                    <p>Naivasha, Kenya</p>
+            <h3>Contact Us</h3>
+                    <p>Phone: +254 721 914 396</p>
+                    <p>Email: Nya-estaco@gmail.com</p>
+                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
             <p>Follow Us On: </p>
             <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
             <a href="https://www.tiktok.com" target="_blank">Tiktok<i class="fab fa-tiktok"></i></a>

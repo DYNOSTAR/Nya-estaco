@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYA-ESTACO INVESTMENT</title>
+    <title>Nya-Estaco Investment</title>
     <style>
+        /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
             --dark-blue: #00008B;
             --medium-blue: #343481;
             --white: #FFFFFF;
+            --black: #000000;
         }
 
         * {
@@ -23,12 +25,12 @@
             background: linear-gradient(to bottom,
                 var(--dark-blue) 0%,
                 var(--dark-blue) 10%,
-                var(--white) 22%,
-                var(--white) 78%,
+                var(--white) 20%,
+                var(--white) 80%,
                 var(--medium-blue) 90%,
                 var(--dark-blue) 100%);
             min-height: 100vh;
-            color: var(--white);
+            color: var(--dark-blue);
         }
 
         .container {
@@ -41,12 +43,12 @@
         .header {
             padding: 20px 0;
             text-align: center;
-            position: relative;
-            height: 300px;
+            background: var(--dark-blue);
+            color: var(--white);
         }
 
         .logo-container img {
-            height: 120px;
+            height: 180px;
             width: auto;
             margin-bottom: 15px;
         }
@@ -83,64 +85,85 @@
         /* Main Content Styles */
         .main-content {
             flex: 1;
-            padding: 20px;
-            color: var(--dark-blue);
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .page-title {
             text-align: center;
-            margin: 40px 0 20px;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             color: var(--dark-blue);
         }
 
         .motto {
             text-align: center;
             font-size: 1.3rem;
-            margin: 0 0 30px;
+            margin-bottom: 40px;
             color: var(--medium-blue);
         }
 
-        /* Slideshow Styles */
-        .slideshow-container {
-            max-width: 900px;
-            margin: 0 auto 30px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        /* Product Categories Section */
+        .product-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .slides {
-            display: none;
-            position: relative;
-            padding-bottom: 50px;
-        }
-
-        .slides img {
-            width: 100%;
-            height: 400px;
-            object-fit: contain;
+        .category-card {
+            background: var(--white);
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .slide-content {
-            position: static;
-            background: transparent;
-            padding: 15px 0;
-            margin-top: 10px;
+        .category-card:hover {
+            transform: translateY(-5px);
         }
 
-        .slide-content h3 {
-            color: var(--dark-blue);
-            font-size: 1.6rem;
-            text-shadow: none;
-            margin: 10px 0;
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: 20px;
+        }
+
+        .category-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .category-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .category-content a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-blue);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .category-content a:hover {
+            background: var(--dark-blue);
         }
 
         /* Footer Styles */
         .footer {
-            background: var(--medium-blue);
-            padding: 25px 20px;
+            background: var(--dark-blue);
+            padding: 30px 20px;
             text-align: center;
             color: var(--white);
         }
@@ -159,30 +182,21 @@
             margin: 10px 0;
         }
 
-        /* Navigation Arrows */
-        .prev, .next {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            font-size: 35px;
+        .social-icons {
+            margin-bottom: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
             color: var(--white);
-            cursor: pointer;
-            padding: 12px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 50%;
-            transition: background 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .prev:hover, .next:hover {
-            background: rgba(0,0,0,0.7);
-        }
-
-        .prev { left: 20px; }
-        .next { right: 20px; }
-
-        @keyframes fadeEffect {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
+        .social-icons a:hover {
+            color: var(--primary-blue);
         }
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -208,53 +222,79 @@
         <!-- Main Content -->
         <main class="main-content">
             <h1 class="page-title">Nya-Estaco Stores</h1>
-            <p class="motto">Your Best Quality Partner</p>
+            <p class="motto">Your Trusted Partner in Quality Products</p>
 
-            <!-- Slideshow -->
-            <div class="slideshow-container">
+            <!-- Product Categories -->
+            <div class="product-categories">
                 <!-- Flour -->
-                <div class="slides">
+                <div class="category-card">
                     <img src="Flou pro.jpeg" alt="Flour Products">
-                    <div class="slide-content">
-                        <h3>Premium Flour Selection</h3>
+                    <div class="category-content">
+                        <h3>Premium Flour</h3>
+                        <p>
+                            Discover our range of high-quality flours, including wheat, maize, millet, sorgum
+                            and cassava flour. Perfect for baking and cooking, our flours are finely
+                            milled for exceptional results.
+                        </p>
+                        <a href="products.html">Explore Flour</a>
                     </div>
                 </div>
 
                 <!-- Grains -->
-                <div class="slides">
+                <div class="category-card">
                     <img src="Grain pro.jpeg" alt="Grains Products">
-                    <div class="slide-content">
+                    <div class="category-content">
                         <h3>Quality Grains</h3>
+                        <p>
+                            From maize to millet, sorghum and rice, our grains are carefully selected
+                            and cleaned for maximum freshness and nutrition. Ideal for
+                            households and businesses.
+                        </p>
+                        <a href="products.html">Explore Grains</a>
                     </div>
                 </div>
 
                 <!-- Cereals -->
-                <div class="slides">
+                <div class="category-card">
                     <img src="Cereal pro.jpeg" alt="Cereals Products">
-                    <div class="slide-content">
-                        <h3>Nutritious Cereals</h3>
+                    <div class="category-content">
+                        <h3>Sorted/Unsorted Cereals</h3>
+                        <p>
+                            Start your day with our wholesome cereals. We offer a variety
+                            of options, including Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde
+                            etc.
+                        </p>
+                        <a href="products.html">Explore Cereals</a>
                     </div>
                 </div>
 
                 <!-- Spices -->
-                <div class="slides">
+                <div class="category-card">
                     <img src="spices pro.jpeg" alt="Spices Products">
-                    <div class="slide-content">
+                    <div class="category-content">
                         <h3>Authentic Spices</h3>
+                        <p>
+                            Enhance your meals with our premium spices. From turmeric to
+                            ginger and chili, our spices are sourced for their rich flavor
+                            and aroma.
+                        </p>
+                        <a href="products.html">Explore Spices</a>
                     </div>
                 </div>
 
                 <!-- Animal Feeds -->
-                <div class="slides">
+                <div class="category-card">
                     <img src="animal feeds pro.jpeg" alt="Animal Feeds">
-                    <div class="slide-content">
-                        <h3>Nutritious Animal Feeds</h3>
+                    <div class="category-content">
+                        <h3>Animal Feeds</h3>
+                        <p>
+                            We provide high-quality animal feeds for poultry, dairy, and
+                            livestock. Our feeds are formulated for optimal growth and
+                            productivity.
+                        </p>
+                        <a href="products.html">Explore Feeds</a>
                     </div>
                 </div>
-
-                <!-- Navigation Arrows -->
-                <button class="prev" onclick="changeSlide(-1)">❮</button>
-                <button class="next" onclick="changeSlide(1)">❯</button>
             </div>
         </main>
 
@@ -263,44 +303,25 @@
             <div class="footer-content">
                 <div class="contact-info">
                     <h3>Our Location</h3>
-                    <p>Nairobi CBD, Biashara Street</p>
-                    <p>P.O Box 12345-00100</p>
-                    <p>Nairobi, Kenya</p>
+                    <p>Nairobi, Old City Stadium, off factory street</p>
+                    <p>P.O Box 1748-00100</p>
+                    <p>Naivasha, Kenya</p>
                 </div>
                 <div class="contact-info">
                     <h3>Contact Us</h3>
-                    <p>Phone: +254 700 123 456</p>
-                    <p>Email: info@nya-estaco.co.ke</p>
-                    <p>Open: Mon-Sat 8:00 AM - 6:00 PM</p>
+                    <p>Phone: +254 721 914 396</p>
+                    <p>Email: Nya-estaco@gmail.com</p>
+                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
                 </div>
             </div>
             <div class="social-icons">
-                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://x.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a>Follow us on:</a>
+                <a href="https://facebook.com" target="_blank">FaceBook<i class="fab fa-facebook"></i></a>
+                <a href="https://tiktok.com" target="_blank">Tiktok<i class="fab fa-tiktok"></i></a>
+                <a href="https://x.com" target="_blank">X<i class="fab fa-x"></i></a>
             </div>
-            <p>Copyright &copy; 2023 Nya-Estaco Investment. All rights reserved.</p>
+            <p>Copyright &copy; 2025 Nya-Estaco Investment. All rights reserved.</p>
         </footer>
     </div>
-
-    <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slides');
-
-        function showSlides() {
-            slides.forEach(slide => slide.style.display = "none");
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].style.display = "block";
-            setTimeout(showSlides, 5000);
-        }
-
-        function changeSlide(n) {
-            slides.forEach(slide => slide.style.display = "none");
-            slideIndex = (slideIndex + n + slides.length) % slides.length;
-            slides[slideIndex].style.display = "block";
-        }
-
-        showSlides();
-    </script>
 </body>
 </html>
