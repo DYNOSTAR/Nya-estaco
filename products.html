@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Nya-Estaco Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
             --primary-blue: #1E90FF;
             --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
-            --light-blue: #E6F4F1;
             --white: #FFFFFF;
             --gray: #F5F5F5;
         }
@@ -27,7 +27,7 @@
                 var(--dark-blue) 10%,
                 var(--white) 20%,
                 var(--white) 80%,
-                var(--medium-blue) 90%,
+                var(--dark-blue) 90%,
                 var(--dark-blue) 100%);
             min-height: 100vh;
             color: var(--dark-blue);
@@ -41,41 +41,36 @@
 
         /* Header */
         .header {
-            padding: 40px;
+            padding: 20px;
             background: var(--dark-blue);
             color: var(--white);
             text-align: center;
         }
+        
         .logo-container img {
-            height: 120px;
+            height: 80px;
             width: auto;
             margin-bottom: 10px;
-            }
+        }
 
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
         }
-        .header p {
-            margin-bottom: 2px;
-        }
+        
         /* Navigation */
         .nav {
             background: var(--dark-blue);
             padding: 10px;
-            text-align: center;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .nav ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .nav ul li {
-            margin: 0;
+            display: inline-flex;
+            gap: 15px;
         }
 
         .nav ul li a {
@@ -85,6 +80,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             transition: background 0.3s ease;
+            display: inline-block;
         }
 
         .nav ul li a:hover {
@@ -93,19 +89,18 @@
 
         /* Product Categories */
         .product-category {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
-        h2 {
+        
+        h1, h2 {
             color: var(--primary-blue);
-            text-align: Left;
-            margin: 25px 0;
-            text-decoration: underline;
+            margin: 15px 0;
         }
 
         .product-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
 
         .product {
@@ -114,70 +109,138 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .product:hover {
+            transform: translateY(-5px);
         }
 
         .product img {
             width: 100%;
-            height: 200px;
+            height: 160px;
             object-fit: cover;
             border-radius: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .product h3 {
             color: var(--dark-blue);
             margin: 10px 0;
+            font-size: 1.2rem;
         }
 
-        .product p {
-            color: #555;
-            margin-bottom: 10px;
+        .price-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
         }
 
-        .price {
-            font-weight: bold;
-            color: var(--primary-blue);
-            font-size: 1.1rem;
+        .price-btn {
+            padding: 8px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .price-btn:hover {
+            background: var(--dark-blue);
         }
 
         /* Footer */
         .footer {
             background: var(--dark-blue);
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
             color: var(--white);
+            padding: 20px;
+            margin-top: 30px;
         }
+        
         .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
         }
-        .footer p {
-            margin: 10px 0;
-        }
-
-        .social-icons {
+        
+        .footer-section h3 {
             margin-bottom: 10px;
+            font-size: 1.1rem;
         }
-
+        
+        .footer-section p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
         .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
             color: var(--white);
-            transition: color 0.3s ease;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
         }
 
-        .social-icons a:hover {
-            color: black;
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-container img {
+                height: 60px;
+            }
+            
+            .product-list {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .product img {
+                height: 120px;
+            }
+            
+            .price-btn {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav ul {
+                gap: 8px;
+            }
+            
+            .nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header -->
@@ -201,206 +264,102 @@
     </div>
 
     <!-- Product Page Content -->
-    <div class="container">
+    <div class="container" id="products-container">
         <h1>Our Products</h1>
-
-        <!-- Cereals Section -->
-        <div class="product-category">
-            <h2>1. Cereals</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="download.jpeg" alt="Nyayo">
-                    <h3>Nyayo</h3>
-                    <p>Premium mixed cereal</p>
-                    <div class="price">Ksh 150/kg</div>
-                </div>
-                <div class="product">
-                    <img src="download (1).jpeg" alt="Njahi">
-                    <h3>Njahi</h3>
-                    <p>Organic black beans</p>
-                    <div class="price">Ksh 200/kg</div>
-                </div>
-                <div class="product">
-                    <img src="gl.jpg" alt="Kamande">
-                    <h3>Kamande</h3>
-                    <p>Premium Green Lentils</p>
-                    <div class="price">Ksh 150/kg</div>
-                </div>
-                <div class="product">
-                    <img src="Baazi.jpeg" alt="Baazi">
-                    <h3>Baazi</h3>
-                    <p>Premium mixed cereal</p>
-                    <div class="price">Ksh 150/kg</div>
-                </div>
-                <div class="product">
-                    <img src="Ndengu.jpeg" alt="Ndengu">
-                    <h3>Ndengu</h3>
-                    <p>Premium Green Grams</p>
-                    <div class="price">Ksh 150/kg</div>
-                </div>
-                <!-- Add other cereals similarly -->
-            </div>
-        </div>
-
-        <!-- Flour Section -->
-        <div class="product-category">
-            <h2>2. Flour</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="MF.jpeg" alt="Maize Flour">
-                    <h3>Maize Flour</h3>
-                    <p>Fine quality maize flour</p>
-                    <div class="price">Ksh 120/kg</div>
-                </div>
-                <div class="product">
-                    <img src="WF.jpeg" alt="Pure Wimbi">
-                    <h3>Pure Wimbi Flour</h3>
-                    <p>100% natural wimbi</p>
-                    <div class="price">Ksh 180/kg</div>
-                </div>
-                <div class="product">
-                    <img src="Mtamaf.jpeg" alt="MtamaFlour">
-                    <h3>Pure Sorgum Flour</h3>
-                    <p>100% natural Sorghum</p>
-                    <div class="price">Ksh 180/kg</div>
-                </div>
-                <div class="product">
-                    <img src="mawere.jpeg" alt="Mawere flour">
-                    <h3>Pure Mawere Flour</h3>
-                    <p>100% natural Mawere</p>
-                    <div class="price">Ksh 180/kg</div>
-                </div>
-                <!-- Add other flours similarly -->
-            </div>
-        </div>
-
-        <!-- Grains Section -->
-        <div class="product-category">
-            <h2>3. Grains</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="maiz.jpeg" alt="Maize">
-                    <h3>Maize</h3>
-                    <p>Premium quality maize</p>
-                    <div class="price">Ksh 90/kg</div>
-                </div>
-                <div class="product">
-                    <img src="Pishori.jpeg" alt="Pishori Rice">
-                    <h3>Pishori Rice</h3>
-                    <p>Premium aromatic rice</p>
-                    <div class="price">Ksh 250/kg</div>
-                </div>
-                <div class="product">
-                    <img src="Sorgum.jpeg" alt="Sorghum">
-                    <h3>Sorghum/Mtama</h3>
-                    <p>Premium Sorghum seeds</p>
-                    <div class="price">Ksh 250/kg</div>
-                </div>
-                <div class="product">
-                    <img src="wimbi.jpeg" alt="wimbi">
-                    <h3>Wimbi</h3>
-                    <p>Premium Wimbi seeds</p>
-                    <div class="price">Ksh 250/kg</div>
-                </div>
-                <div class="product">
-                    <img src="soya.jpeg" alt="Soya">
-                    <h3>Soya</h3>
-                    <p>Premium Soya</p>
-                    <div class="price">Ksh 250/kg</div>
-                </div>
-                <!-- Add other grains similarly -->
-            </div>
-        </div>
-
-
-        <!-- Spices Section -->
-        <div class="product-category">
-            <h2>4. Spices</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="Chia.jpeg" alt="Chia Seeds">
-                    <h3>Chia Seeds</h3>
-                    <p>Organic chia seeds</p>
-                    <div class="price">Ksh 400/100g</div>
-                </div>
-                <div class="product">
-                    <img src="Tumeric.jpeg" alt="Turmeric">
-                    <h3>Turmeric</h3>
-                    <p>Fresh ground turmeric</p>
-                    <div class="price">Ksh 150/100g</div>
-                </div>
-                <div class="product">
-                    <img src="Ginger.jpeg" alt="Ginger">
-                    <h3>Ginger</h3>
-                    <p>Fresh ground Ginger</p>
-                    <div class="price">Ksh 150/100g</div>
-                </div>
-                <div class="product">
-                    <img src="garlic.jpeg" alt="Garlic">
-                    <h3>Garlic</h3>
-                    <p>Fresh ground Garlic</p>
-                    <div class="price">Ksh 150/100g</div>
-                </div>
-                <!-- Add other spices similarly -->
-            </div>
-        </div>
-
-        <!-- Animal Feeds Section -->
-        <div class="product-category">
-            <h2>5. Animal Feeds</h2>
-            <div class="product-list">
-                <div class="product">
-                    <img src="Dairymeal.jpeg" alt="Dairy Meal">
-                    <h3>Dairy Meal</h3>
-                    <p>High protein dairy feed</p>
-                    <div class="price">Ksh 3,500/50kg</div>
-                </div>
-                <div class="product">
-                    <img src="Layersmash.jpeg" alt="Layers Mash">
-                    <h3>Layers Mash</h3>
-                    <p>Poultry layer feed</p>
-                    <div class="price">Ksh 3,200/50kg</div>
-                </div>
-                <div class="product">
-                    <img src="Kienyeji.jpeg" alt="Kienyeji Mash">
-                    <h3>Kienyeji Mash</h3>
-                    <p>Kuku Kienyeji feed</p>
-                    <div class="price">Ksh 3,200/50kg</div>
-                </div>
-                <div class="product">
-                    <img src="Chicks.jpeg" alt="Chick Mash">
-                    <h3>Chick Mash</h3>
-                    <p>A Day Old Chick Feed</p>
-                    <div class="price">Ksh 3,200/50kg</div>
-                </div>
-                <div class="product">
-                    <img src="Growers.jpeg" alt="Growers Mash">
-                    <h3>Growers Mash</h3>
-                    <p>Growers feed</p>
-                    <div class="price">Ksh 3,200/50kg</div>
-                </div>
-                <!-- Add other feeds similarly -->
-            </div>
-        </div>
+        <!-- Products will load here dynamically -->
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <div class="social-icons">
-            <h3>Our Location</h3>
-                    <p>Nairobi, Old City Stadium, off factory street</p>
-                    <p>P.O Box 1748-00100</p>
-                    <p>Naivasha, Kenya</p>
-            <h3>Contact Us</h3>
-                    <p>Phone: +254 721 914 396</p>
-                    <p>Email: Nya-estaco@gmail.com</p>
-                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
-            <p>Follow Us On: </p>
-            <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com" target="_blank">Tiktok<i class="fab fa-tiktok"></i></a>
-            <a href="https://www.x.com" target="_blank">X<i class="fab fa-twitter"></i></a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Our Location</h3>
+                <p>Nairobi, Old City Stadium</p>
+                <p>Off Factory Street</p>
+                <p>P.O Box 1748-00100</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
+                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
-        <p>Copyright &copy; Nya-Estaco.com</p>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+        </div>
     </div>
+
+    <!-- Google Sheets Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/dist/tabletop.min.js"></script>
+    <script>
+        // Load products from Google Sheets
+        function loadProducts() {
+            const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID'; // Replace with your actual Sheet ID
+            Tabletop.init({
+                key: `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`,
+                callback: showProducts,
+                simpleSheet: true
+            });
+        }
+
+        // Display products on the page
+        function showProducts(data) {
+            let html = '';
+            
+            // Group by category
+            const categories = {};
+            data.forEach(product => {
+                if (!categories[product.Category]) {
+                    categories[product.Category] = [];
+                }
+                categories[product.Category].push(product);
+            });
+
+            // Generate HTML for each category
+            let categoryCount = 1;
+            for (const [category, products] of Object.entries(categories)) {
+                html += `
+                    <div class="product-category">
+                        <h2>${categoryCount}. ${category}</h2>
+                        <div class="product-list">
+                            ${products.map(product => `
+                                <div class="product">
+                                    <img src="${product['Image URL'] || 'placeholder.jpg'}" alt="${product['Product Name']}">
+                                    <h3>${product['Product Name']}</h3>
+                                    <div class="price-options">
+                                        <button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>
+                                        <button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>
+                                        <button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                categoryCount++;
+            }
+
+            document.getElementById('products-container').innerHTML += html;
+            
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+        }
+
+        // Load products when page opens
+        window.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
 </body>
 </html>
