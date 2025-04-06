@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Nya-Estaco Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Color Palette */
         :root {
-            --primary-blue: #1E90FF; /* Dodger Blue */
-            --secondary-blue: #87CEEB; /* Sky Blue */
-            --dark-blue: #00008B; /* Dark Blue */
-            --light-blue: #E6F4F1; /* Very Light Blue */
+            --primary-blue: #1E90FF;
+            --secondary-blue: #87CEEB;
+            --dark-blue: #00008B;
             --white: #FFFFFF;
             --gray: #F5F5F5;
         }
@@ -23,121 +23,224 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, var(--primary-blue), var(--light-blue), var(--white));
-            color: var(--dark-blue);
+            background: linear-gradient(to bottom,
+                var(--dark-blue) 0%,
+                var(--dark-blue) 10%,
+                var(--white) 20%,
+                var(--white) 80%,
+                var(--dark-blue) 90%,
+                var(--dark-blue) 100%);
             min-height: 100vh;
+            color: var(--dark-blue);
         }
 
         /* Header */
         .header {
-            padding: 40px;
+            padding: 20px;
             background: var(--dark-blue);
             color: var(--white);
             text-align: center;
         }
+        
         .logo-container img {
-            height: 120px;
+            height: 80px;
             width: auto;
-            margin-bottom: 10px;
-            }
-
-        .header h1 {
-            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
         /* Navigation */
         .nav {
             background: var(--dark-blue);
-            padding: 15px;
-            text-align: center;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
 
         .nav ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+            display: inline-flex;
+            gap: 15px;
+            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 25px;
             transition: background 0.3s ease;
+            display: inline-block;
+            font-size: 0.9rem;
         }
 
         .nav ul li a:hover {
             background: rgba(255, 255, 255, 0.2);
         }
-        /* About Us Content */
+
+        /* About Content */
         .about-content {
-            display: flex;
-            align-items: center;
-            padding: 40px 20px;
             max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: block;
             margin: 0 auto;
         }
 
-        .about-content img {
-            width: 300px; /* Adjust as needed */
-            height: auto;
-            margin-right: 40px;
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-text p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        /* Mission/Vision Section */
+        .mission-vision {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h2 {
-            font-size: 2rem;
-            color: #00000;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .card h3 {
+            color: var(--dark-blue);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         /* Footer */
         .footer {
             background: var(--dark-blue);
-            text-align: center;
+            color: var(--white);
             padding: 20px;
-            color: var(--white);
-            margin-top: 40px;
+            margin-top: 30px;
         }
-
-        .footer p {
-            margin: 10px 0;
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        /* Social Media Icons */
-        .social-icons {
+        
+        .footer-section h3 {
             margin-bottom: 10px;
+            font-size: 1.1rem;
         }
-
+        
+        .footer-section p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
         .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
             color: var(--white);
-            transition: color 0.3s ease;
+            font-size: 1.5rem;
+            transition: color 0.3s;
         }
-
+        
         .social-icons a:hover {
             color: var(--secondary-blue);
         }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-container img {
+                height: 60px;
+            }
+            
+            .about-text h2 {
+                font-size: 1.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav ul {
+                gap: 8px;
+            }
+            
+            .nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header -->
@@ -147,60 +250,112 @@
         </div>
         <h1>Nya-Estaco Stores</h1>
         <p>Your Trusted Partner in Quality Products</p>
-        <!-- Navigation -->
-        <div class="nav">
-            <ul>
-                <li><a href="Index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="Services.html">Services</a></li>
-                <li><a href="About.html">About</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>
-            </ul>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- About Content -->
+    <div class="about-content">
+        <div class="about-image">
+            <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Store">
+        </div>
+        <div class="about-text">
+            <h2>About Our Company</h2>
+            <p>
+                Welcome to <strong>Nya-Estaco Stores</strong>, your premier destination for high-quality agricultural products.
+                Established with a commitment to excellence, we specialize in providing top-grade cereals, flour,
+                grains, animal feeds, and spices to both wholesale and retail customers across Kenya.
+            </p>
+            <p>
+                With years of experience in the industry, we've built a reputation for reliability and quality.
+                Our products are carefully sourced from trusted farmers and producers, ensuring you receive only
+                the best for your home or business needs.
+            </p>
+            <p>
+                At Nya-Estaco, we understand the importance of quality nutrition for both families and livestock.
+                That's why we maintain strict quality control measures at every stage, from sourcing to delivery.
+            </p>
         </div>
     </div>
 
-    <!-- About Us Content -->
-    <div class="about-content">
-        <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Logo">
-        <div class="about-text">
-            <h2>About Us</h2>
+    <!-- Mission/Vision Section -->
+    <div class="mission-vision">
+        <div class="card">
+            <h3>Our Mission</h3>
             <p>
-                Welcome to <strong>Nya-Estaco Investment</strong>, your trusted partner in quality products.
-                We specialize in providing high-quality cereals, flour, grains, animal feeds, and spices
-                to meet the needs of both wholesale and retail customers.
+                To provide high-quality agricultural products at competitive prices while maintaining
+                exceptional customer service and building lasting relationships with our clients.
+                We strive to be the most trusted supplier in the region.
             </p>
+        </div>
+        <div class="card">
+            <h3>Our Vision</h3>
             <p>
-                Our mission is to deliver the best quality products at competitive prices. We source our
-                products from trusted suppliers and ensure they meet the highest standards of quality and
-                freshness. Whether you're looking for maize, rice, wheat flour, or animal feeds, we have
-                you covered.
+                To become the leading provider of quality cereals and animal feeds in East Africa,
+                recognized for our reliability, quality products, and commitment to customer satisfaction.
+                We aim to support food security and agricultural development in our communities.
             </p>
+        </div>
+        <div class="card">
+            <h3>Our Values</h3>
             <p>
-                At Nya-Estaco, we believe in building long-term relationships with our customers. Our team
-                is dedicated to providing excellent service and ensuring your satisfaction. Thank you for
-                choosing Nya-Estaco Investment as your preferred supplier.
+                <strong>Quality:</strong> We never compromise on product standards<br>
+                <strong>Integrity:</strong> Honest and transparent business practices<br>
+                <strong>Reliability:</strong> Consistent service you can depend on<br>
+                <strong>Community:</strong> Supporting local farmers and businesses
             </p>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">
-        <!-- Social Media Icons -->
-        <div class="social-icons">
-            <h3>Our Location</h3>
-                    <p>Nairobi, Old City Stadium, off factory street</p>
-                    <p>P.O Box 1748-00100</p>
-                    <p>Naivasha, Kenya</p>
-            <h3>Contact Us</h3>
-                    <p>Phone: +254 721 914 396</p>
-                    <p>Email: Nya-estaco@gmail.com</p>
-                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
-            <p>Follow Us On: </p>
-            <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com" target="_blank">TikTok<i class="fab fa-tiktok"></i></a>
-            <a href="https://www.x.com" target="_blank">X<i class="fab fa-twitter"></i></a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Our Location</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
+                <p>Off Factory Street</p>
+                <p>P.O Box 1748-00100</p>
+                <p>Naivasha, Kenya</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
+                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <h3 style="margin-top: 20px;">Quick Links</h3>
+                <p><a href="products.html" style="color: var(--white);">Our Products</a></p>
+                <p><a href="Services.html" style="color: var(--white);">Our Services</a></p>
+            </div>
         </div>
-        <p>Copyright &copy; Nya-Estaco.com</p>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+        </div>
     </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>

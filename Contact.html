@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Nya-Estaco Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
             --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
-            --light-blue: #E6F4F1;
             --white: #FFFFFF;
             --gray: #F5F5F5;
         }
@@ -22,148 +23,302 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--light-blue);
+            background: linear-gradient(to bottom,
+                var(--dark-blue) 0%,
+                var(--dark-blue) 10%,
+                var(--white) 20%,
+                var(--white) 80%,
+                var(--dark-blue) 90%,
+                var(--dark-blue) 100%);
+            min-height: 100vh;
             color: var(--dark-blue);
         }
 
         /* Header */
         .header {
-            padding: 40px;
+            padding: 20px;
             background: var(--dark-blue);
             color: var(--white);
             text-align: center;
         }
+        
         .logo-container img {
-            height: 120px;
+            height: 80px;
             width: auto;
-            margin-bottom: 10px;
-            }
-        .header h1 {
-            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
         /* Navigation */
         .nav {
             background: var(--dark-blue);
-            padding: 15px;
-            text-align: center;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
 
         .nav ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+            display: inline-flex;
+            gap: 15px;
+            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 25px;
             transition: background 0.3s ease;
+            display: inline-block;
+            font-size: 0.9rem;
         }
 
         .nav ul li a:hover {
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Contact Info Section */
-        .contact-info {
+        /* Contact Content */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info, .contact-form {
             background: var(--white);
-            margin: 20px auto;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            width: 80%;
-            max-width: 500px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             text-align: center;
         }
 
-        .contact-info h2 {
-            color: var(--primary-blue);
+        .contact-details {
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
 
-        .contact-details a {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 10px 20px;
+        .contact-icon {
+            width: 40px;
+            height: 40px;
             background: var(--primary-blue);
-            color: var(--white);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+
+        .contact-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+        }
+
+        .contact-text a {
+            color: #555;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: color 0.3s;
         }
 
-        .contact-details a:hover {
-            background: var(--dark-blue);
-        }
-
-        /* Social Media Section */
-        .social-media {
-            margin: 20px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .social-media h2 {
+        .contact-text a:hover {
             color: var(--primary-blue);
-            margin-bottom: 15px;
         }
 
-        .social-media ul {
-            list-style: none;
-            padding: 0;
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .social-media ul li a {
+        .social-links a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             background: var(--primary-blue);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            color: white;
+            border-radius: 50%;
+            transition: background 0.3s;
         }
 
-        .social-media ul li a:hover {
+        .social-links a:hover {
             background: var(--dark-blue);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Map */
+        .map-container {
+            height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
         .footer {
             background: var(--dark-blue);
-            text-align: center;
+            color: var(--white);
             padding: 20px;
-            margin-top: 40px;
-            color: var(--white);
+            margin-top: 30px;
         }
-
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
         .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
             color: var(--white);
-            transition: color 0.3s ease;
+            font-size: 1.5rem;
+            transition: color 0.3s;
         }
-
+        
         .social-icons a:hover {
             color: var(--secondary-blue);
         }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-container img {
+                height: 60px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav ul {
+                gap: 8px;
+            }
+            
+            .nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-    <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Header -->
     <div class="header">
         <div class="logo-container">
             <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
@@ -172,6 +327,7 @@
         <p>Your Trusted Partner in Quality Products</p>
     </div>
 
+    <!-- Navigation -->
     <div class="nav">
         <ul>
             <li><a href="Index.html">Home</a></li>
@@ -182,43 +338,141 @@
         </ul>
     </div>
 
-    <main>
-        <section class="contact-info">
-            <h2>Get in Touch</h2>
-            <p>We are here to assist you! Contact us now.</p>
-
+    <!-- Contact Content -->
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2 class="section-title">Contact Information</h2>
+            
             <div class="contact-details">
-                <p><strong>Phone:</strong> <a href="tel:+254721914396"><i class="fas fa-phone"></i> Call Us</a></p>
-                <p><strong>Email:</strong> <a href="mailto:Nya-estaco@gmail.com"><i class="fas fa-envelope"></i> Email Us</a></p>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Address</h3>
+                        <p>Nairobi, Old City Stadium</p>
+                        <p>Off Factory Street</p>
+                        <p>P.O Box 1748-00100</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <a href="tel:+254721914396">+254 721 914 396</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:Nya-estaco@gmail.com">Nya-estaco@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Business Hours</h3>
+                        <p>Sunday - Friday</p>
+                        <p>8:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section class="social-media">
-            <h2>Follow Us</h2>
-            <ul>
-                <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
-                <li><a href="https://www.X.com" target="_blank"><i class="fab fa-twitter"></i> X</a></li>
-                <li><a href="https://www.Tiktok.com" target="_blank"><i class="fab fa-Tiktok"></i> Instagram</a></li>
-            </ul>
-        </section>
-    </main>
-
-    <div class="footer">
-        <div class="social-icons">
-            <h3>Our Location</h3>
-                    <p>Nairobi, Old City Stadium, off factory street</p>
-                    <p>P.O Box 1748-00100</p>
-                    <p>Naivasha, Kenya</p>
-            <h3>Contact Us</h3>
-                    <p>Phone: +254 721 914 396</p>
-                    <p>Email: Nya-estaco@gmail.com</p>
-                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
-            Follow us on :
-            <a href="https://www.facebook.com" target="_blank">Facebook<i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com" target="_blank">TikTok<i class="fab fa-tiktok"></i></a>
-            <a href="https://www.x.com" target="_blank">X<i class="fab fa-twitter"></i></a>
+            
+            <h3 class="section-title">Follow Us</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8085999999997!2d36.821545!3d-1.286582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d664f5a9a7%3A0x1e3b9b5d9b5d9b5d!2sOld%20City%20Stadium!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
-        <p>Copyright &copy; Nya-Estaco.com</p>
+        
+        <div class="contact-form">
+            <h2 class="section-title">Send Us a Message</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Our Location</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
+                <p>Off Factory Street</p>
+                <p>P.O Box 1748-00100</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
+                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <h3 style="margin-top: 20px;">Quick Links</h3>
+                <p><a href="products.html" style="color: var(--white);">Our Products</a></p>
+                <p><a href="Services.html" style="color: var(--white);">Our Services</a></p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
