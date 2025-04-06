@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nya-Estaco Investment</title>
+    <title>Home - Nya-Estaco Investment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
+            --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
-            --medium-blue: #343481;
             --white: #FFFFFF;
-            --black: #000000;
+            --gray: #F5F5F5;
         }
 
         * {
@@ -27,88 +28,89 @@
                 var(--dark-blue) 10%,
                 var(--white) 20%,
                 var(--white) 80%,
-                var(--medium-blue) 90%,
+                var(--dark-blue) 90%,
                 var(--dark-blue) 100%);
             min-height: 100vh;
             color: var(--dark-blue);
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
+        /* Header */
         .header {
-            padding: 20px 0;
-            text-align: center;
+            padding: 20px;
             background: var(--dark-blue);
             color: var(--white);
+            text-align: center;
         }
-
+        
         .logo-container img {
-            height: 180px;
+            height: 80px;
             width: auto;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        /* Navigation Styles */
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Navigation */
         .nav {
-            background: rgba(255,255,255,0.1);
-            padding: 10px 0;
-            margin: 5px 0 15px;
+            background: var(--dark-blue);
+            padding: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
 
         .nav ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+            display: inline-flex;
+            gap: 15px;
+            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
             padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            transition: background 0.3s ease;
+            display: inline-block;
             font-size: 0.9rem;
         }
 
         .nav ul li a:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Main Content Styles */
+        /* Main Content */
         .main-content {
-            flex: 1;
-            padding: 40px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .page-title {
+            color: var(--primary-blue);
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--dark-blue);
+            margin: 25px 0;
+            font-size: 1.8rem;
         }
 
         .motto {
             text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            color: var(--medium-blue);
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
         }
 
-        /* Product Categories Section */
+        /* Product Categories */
         .product-categories {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
         }
 
@@ -116,8 +118,8 @@
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
         .category-card:hover {
@@ -135,193 +137,258 @@
         }
 
         .category-content h3 {
-            font-size: 1.5rem;
+            color: var(--dark-blue);
+            font-size: 1.3rem;
             margin-bottom: 10px;
-            color: #000000;
         }
 
         .category-content p {
-            font-size: 1rem;
+            color: #555;
             line-height: 1.6;
             margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
-        .category-content a {
+        .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 20px;
             background: var(--primary-blue);
-            color: #000000;
+            color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background 0.3s ease;
+            transition: background 0.3s;
+            font-size: 0.9rem;
         }
 
-        .category-content a:hover {
+        .btn:hover {
             background: var(--dark-blue);
         }
 
-        /* Footer Styles */
+        /* Footer */
         .footer {
             background: var(--dark-blue);
-            padding: 30px 20px;
-            text-align: center;
             color: var(--white);
+            padding: 20px;
+            margin-top: 30px;
         }
-
+        
         .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
         }
-
-        .contact-info {
-            text-align: left;
-            margin: 10px 0;
-        }
-
-        .social-icons {
+        
+        .footer-section h3 {
             margin-bottom: 10px;
+            font-size: 1.1rem;
         }
-
+        
+        .footer-section p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
         .social-icons a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
             color: var(--white);
-            transition: color 0.3s ease;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
         }
 
-        .social-icons a:hover {
-            color: var(--primary-blue);
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-container img {
+                height: 60px;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .category-card img {
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav ul {
+                gap: 8px;
+            }
+            
+            .nav ul li a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .product-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="Index.html">Home</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="Services.html">Services</a></li>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <h1 class="page-title">Nya-Estaco Stores</h1>
-            <p class="motto">Your Trusted Partner in Quality Products</p>
-
-            <!-- Product Categories -->
-            <div class="product-categories">
-                <!-- Flour -->
-                <div class="category-card">
-                    <img src="Flou pro.jpeg" alt="Flour Products">
-                    <div class="category-content">
-                        <h3>Premium Flour</h3>
-                        <p>
-                            Discover our range of high-quality flours, including wheat, maize, millet, sorgum
-                            and cassava flour. Perfect for baking and cooking, our flours are finely
-                            milled for exceptional results.
-                        </p>
-                        <a href="products.html">Explore Flour</a>
-                    </div>
-                </div>
-
-                <!-- Grains -->
-                <div class="category-card">
-                    <img src="Grain pro.jpeg" alt="Grains Products">
-                    <div class="category-content">
-                        <h3>Quality Grains</h3>
-                        <p>
-                            From maize to millet, sorghum and rice, our grains are carefully selected
-                            and cleaned for maximum freshness and nutrition. Ideal for
-                            households and businesses.
-                        </p>
-                        <a href="products.html">Explore Grains</a>
-                    </div>
-                </div>
-
-                <!-- Cereals -->
-                <div class="category-card">
-                    <img src="Cereal pro.jpeg" alt="Cereals Products">
-                    <div class="category-content">
-                        <h3>Sorted/Unsorted Cereals</h3>
-                        <p>
-                            Start your day with our wholesome cereals. We offer a variety
-                            of options, including Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde
-                            etc.
-                        </p>
-                        <a href="products.html">Explore Cereals</a>
-                    </div>
-                </div>
-
-                <!-- Spices -->
-                <div class="category-card">
-                    <img src="spices pro.jpeg" alt="Spices Products">
-                    <div class="category-content">
-                        <h3>Authentic Spices</h3>
-                        <p>
-                            Enhance your meals with our premium spices. From turmeric to
-                            ginger and chili, our spices are sourced for their rich flavor
-                            and aroma.
-                        </p>
-                        <a href="products.html">Explore Spices</a>
-                    </div>
-                </div>
-
-                <!-- Animal Feeds -->
-                <div class="category-card">
-                    <img src="animal feeds pro.jpeg" alt="Animal Feeds">
-                    <div class="category-content">
-                        <h3>Animal Feeds</h3>
-                        <p>
-                            We provide high-quality animal feeds for poultry, dairy, and
-                            livestock. Our feeds are formulated for optimal growth and
-                            productivity.
-                        </p>
-                        <a href="products.html">Explore Feeds</a>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="contact-info">
-                    <h3>Our Location</h3>
-                    <p>Nairobi, Old City Stadium, off factory street</p>
-                    <p>P.O Box 1748-00100</p>
-                    <p>Naivasha, Kenya</p>
-                </div>
-                <div class="contact-info">
-                    <h3>Contact Us</h3>
-                    <p>Phone: +254 721 914 396</p>
-                    <p>Email: Nya-estaco@gmail.com</p>
-                    <p>Open: Sun - Fri 8:00 AM - 5:00 PM</p>
-                </div>
-            </div>
-            <div class="social-icons">
-                <a>Follow us on:</a>
-                <a href="https://facebook.com" target="_blank">FaceBook<i class="fab fa-facebook"></i></a>
-                <a href="https://tiktok.com" target="_blank">Tiktok<i class="fab fa-tiktok"></i></a>
-                <a href="https://x.com" target="_blank">X<i class="fab fa-x"></i></a>
-            </div>
-            <p>Copyright &copy; 2025 Nya-Estaco Investment. All rights reserved.</p>
-        </footer>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-container">
+            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+        </div>
+        <h1>Nya-Estaco Stores</h1>
+        <p>For WholeSale and Retail Provisions</p>
     </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="page-title">Welcome to Nya-Estaco Stores</h1>
+        <p class="motto">Your Trusted Partner in Quality Products</p>
+
+        <!-- Product Categories -->
+        <div class="product-categories">
+            <!-- Flour -->
+            <div class="category-card">
+                <img src="Flou pro.jpeg" alt="Flour Products">
+                <div class="category-content">
+                    <h3>Premium Flour</h3>
+                    <p>
+                        Discover our range of high-quality flours, including wheat, maize, millet, 
+                        sorghum and cassava flour. Perfect for baking and cooking, our flours are 
+                        finely milled for exceptional results.
+                    </p>
+                    <a href="products.html" class="btn">Explore Flour</a>
+                </div>
+            </div>
+
+            <!-- Grains -->
+            <div class="category-card">
+                <img src="Grain pro.jpeg" alt="Grains Products">
+                <div class="category-content">
+                    <h3>Quality Grains</h3>
+                    <p>
+                        From maize to millet, sorghum and rice, our grains are carefully selected
+                        and cleaned for maximum freshness and nutrition. Ideal for
+                        households and businesses.
+                    </p>
+                    <a href="products.html" class="btn">Explore Grains</a>
+                </div>
+            </div>
+
+            <!-- Cereals -->
+            <div class="category-card">
+                <img src="Cereal pro.jpeg" alt="Cereals Products">
+                <div class="category-content">
+                    <h3>Sorted/Unsorted Cereals</h3>
+                    <p>
+                        Start your day with our wholesome cereals. We offer a variety
+                        of options, including Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde
+                        and more.
+                    </p>
+                    <a href="products.html" class="btn">Explore Cereals</a>
+                </div>
+            </div>
+
+            <!-- Spices -->
+            <div class="category-card">
+                <img src="spices pro.jpeg" alt="Spices Products">
+                <div class="category-content">
+                    <h3>Authentic Spices</h3>
+                    <p>
+                        Enhance your meals with our premium spices. From turmeric to
+                        ginger and chili, our spices are sourced for their rich flavor
+                        and aroma.
+                    </p>
+                    <a href="products.html" class="btn">Explore Spices</a>
+                </div>
+            </div>
+
+            <!-- Animal Feeds -->
+            <div class="category-card">
+                <img src="animal feeds pro.jpeg" alt="Animal Feeds">
+                <div class="category-content">
+                    <h3>Animal Feeds</h3>
+                    <p>
+                        We provide high-quality animal feeds for poultry, dairy, and
+                        livestock. Our feeds are formulated for optimal growth and
+                        productivity.
+                    </p>
+                    <a href="products.html" class="btn">Explore Feeds</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Our Location</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
+                <p>Off Factory Street</p>
+                <p>P.O Box 1748-00100</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
+                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
