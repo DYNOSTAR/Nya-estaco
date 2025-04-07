@@ -304,63 +304,77 @@
     </div>
 
     <!-- Google Sheets Integration -->
-    <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/dist/tabletop.min.js"></script>
-    <script>
-        // Load products from Google Sheets
-        function loadProducts() {
-            const SHEET_ID = '1JDkVj-u339YlYDKn57nAheFbrxyxpaUsbUkeF6Nbfp0'; // Replace with your actual Sheet ID
-            Tabletop.init({
-                key: `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit`,
-                callback: showProducts,
-                simpleSheet: true
-            });
-        }
+   <script>
+    // Modern Google Sheets API approach
+    async function loadProducts() {
+        const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc';
+        const SHEET_NAME = 'Sheet1'; // Change if your sheet has a different name
+        const API_KEY = ''; // Optional but recommended for production
 
-        // Display products on the page
-        function showProducts(data) {
-            let html = '';
+        try {
+            // First try the JSONP approach (no API key needed)
+            const url = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
             
-            // Group by category
-            const categories = {};
-            data.forEach(product => {
-                if (!categories[product.Category]) {
-                    categories[product.Category] = [];
-                }
-                categories[product.Category].push(product);
-            });
-
-            // Generate HTML for each category
-            let categoryCount = 1;
-            for (const [category, products] of Object.entries(categories)) {
-                html += `
-                    <div class="product-category">
-                        <h2>${categoryCount}. ${category}</h2>
-                        <div class="product-list">
-                            ${products.map(product => `
-                                <div class="product">
-                                    <img src="${product['Image URL'] || 'placeholder.jpg'}" alt="${product['Product Name']}">
-                                    <h3>${product['Product Name']}</h3>
-                                    <div class="price-options">
-                                        <button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>
-                                        <button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>
-                                        <button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-                categoryCount++;
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (!data || data.length === 0) {
+                throw new Error("No data received from Google Sheets");
             }
-
-            document.getElementById('products-container').innerHTML += html;
             
-            // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
+            showProducts(data);
+        } catch (error) {
+            console.error("Error loading products:", error);
+            document.getElementById('products-container').innerHTML = `
+                <div class="error-message">
+                    <p>Products failed to load. Please try again later.</p>
+                    <p>Error: ${error.message}</p>
+                </div>
+            `;
+        }
+    }
+
+    function showProducts(data) {
+        let html = '';
+        
+        // Group by category
+        const categories = {};
+        data.forEach(product => {
+            if (!categories[product.Category]) {
+                categories[product.Category] = [];
+            }
+            categories[product.Category].push(product);
+        });
+
+        // Generate HTML for each category
+        let categoryCount = 1;
+        for (const [category, products] of Object.entries(categories)) {
+            html += `
+                <div class="product-category">
+                    <h2>${categoryCount}. ${category}</h2>
+                    <div class="product-list">
+                        ${products.map(product => `
+                            <div class="product">
+                                <img src="${product['Image URL'] || 'placeholder.jpg'}" alt="${product['Product Name']}">
+                                <h3>${product['Product Name']}</h3>
+                                <div class="price-options">
+                                    ${product['Price (1kg)'] !== '-' ? `<button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>` : ''}
+                                    ${product['Price (½ Bag)'] !== '-' ? `<button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>` : ''}
+                                    ${product['Price (1 Bag)'] !== '-' ? `<button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            categoryCount++;
         }
 
-        // Load products when page opens
-        window.addEventListener('DOMContentLoaded', loadProducts);
-    </script>
+        document.getElementById('products-container').innerHTML = html;
+        document.getElementById('year').textContent = new Date().getFullYear();
+    }
+
+    window.addEventListener('DOMContentLoaded', loadProducts);
+</script>
 </body>
 </html>
