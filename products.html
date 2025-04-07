@@ -119,7 +119,8 @@
         .product img {
             width: 100%;
             height: 160px;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #f0f0f0;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -176,6 +177,28 @@
         .footer-section p {
             margin: 5px 0;
             font-size: 0.9rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 3px 0;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--secondary-blue);
+            text-decoration: underline;
         }
         
         .social-icons {
@@ -239,6 +262,10 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -274,10 +301,21 @@
     <div class="footer">
         <div class="footer-content">
             <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="products.html"><i class="fas fa-shopping-basket"></i> Products</a></li>
+                    <li><a href="Services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
                 <h3>Our Location</h3>
-                <p>Nairobi, Old City Stadium</p>
-                <p>Off Factory Street</p>
-                <p>P.O Box 1748-00100</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
+                <p><i class="fas fa-road"></i> Off Factory Street</p>
+                <p><i class="fas fa-envelope"></i> P.O Box 1748-00100</p>
             </div>
             
             <div class="footer-section">
@@ -304,77 +342,80 @@
     </div>
 
     <!-- Google Sheets Integration -->
-   <script>
-    // Modern Google Sheets API approach
-    async function loadProducts() {
-        const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc';
-        const SHEET_NAME = 'Sheet1'; // Change if your sheet has a different name
-        const API_KEY = ''; // Optional but recommended for production
-
-        try {
-            // First try the JSONP approach (no API key needed)
-            const url = `https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`;
+    <script src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/dist/tabletop.min.js"></script>
+    <script>
+        // Load products from Google Sheets
+        function loadProducts() {
+            const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc';
+            const placeholderUrl = 'https://via.placeholder.com/250x160?text=Product+Image';
             
-            const response = await fetch(url);
-            const data = await response.json();
-            
-            if (!data || data.length === 0) {
-                throw new Error("No data received from Google Sheets");
-            }
-            
-            showProducts(data);
-        } catch (error) {
-            console.error("Error loading products:", error);
-            document.getElementById('products-container').innerHTML = `
-                <div class="error-message">
-                    <p>Products failed to load. Please try again later.</p>
-                    <p>Error: ${error.message}</p>
-                </div>
-            `;
+            Tabletop.init({
+                key: `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pubhtml`,
+                callback: showProducts,
+                simpleSheet: true,
+                debug: true
+            });
         }
-    }
 
-    function showProducts(data) {
-        let html = '';
-        
-        // Group by category
-        const categories = {};
-        data.forEach(product => {
-            if (!categories[product.Category]) {
-                categories[product.Category] = [];
-            }
-            categories[product.Category].push(product);
-        });
+        // Display products on the page
+        function showProducts(data) {
+            console.log("Received data:", data);
+            
+            let html = '';
+            const placeholderUrl = 'https://via.placeholder.com/250x160?text=Product+Image';
+            
+            // Group by category
+            const categories = {};
+            data.forEach(product => {
+                if (!categories[product.Category]) {
+                    categories[product.Category] = [];
+                }
+                categories[product.Category].push(product);
+            });
 
-        // Generate HTML for each category
-        let categoryCount = 1;
-        for (const [category, products] of Object.entries(categories)) {
-            html += `
-                <div class="product-category">
-                    <h2>${categoryCount}. ${category}</h2>
-                    <div class="product-list">
-                        ${products.map(product => `
-                            <div class="product">
-                                <img src="${product['Image URL'] || 'placeholder.jpg'}" alt="${product['Product Name']}">
-                                <h3>${product['Product Name']}</h3>
-                                <div class="price-options">
-                                    ${product['Price (1kg)'] !== '-' ? `<button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>` : ''}
-                                    ${product['Price (½ Bag)'] !== '-' ? `<button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>` : ''}
-                                    ${product['Price (1 Bag)'] !== '-' ? `<button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>` : ''}
+            // Generate HTML for each category
+            let categoryCount = 1;
+            for (const [category, products] of Object.entries(categories)) {
+                html += `
+                    <div class="product-category">
+                        <h2>${categoryCount}. ${category}</h2>
+                        <div class="product-list">
+                            ${products.map(product => {
+                                // Validate image URL
+                                let imageUrl = placeholderUrl;
+                                if (product['Image URL'] && 
+                                    (product['Image URL'].startsWith('http://') || 
+                                     product['Image URL'].startsWith('https://'))) {
+                                    imageUrl = product['Image URL'];
+                                }
+                                
+                                return `
+                                <div class="product">
+                                    <img src="${imageUrl}" alt="${product['Product Name']}" 
+                                         onerror="this.src='${placeholderUrl}'">
+                                    <h3>${product['Product Name']}</h3>
+                                    <div class="price-options">
+                                        ${product['Price (1kg)'] ? `<button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>` : ''}
+                                        ${product['Price (½ Bag)'] ? `<button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>` : ''}
+                                        ${product['Price (1 Bag)'] ? `<button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>` : ''}
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('')}
+                                `;
+                            }).join('')}
+                        </div>
                     </div>
-                </div>
-            `;
-            categoryCount++;
+                `;
+                categoryCount++;
+            }
+
+            document.getElementById('products-container').innerHTML += html;
+            
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
         }
 
-        document.getElementById('products-container').innerHTML = html;
-        document.getElementById('year').textContent = new Date().getFullYear();
-    }
-
-    window.addEventListener('DOMContentLoaded', loadProducts);
-</script>
+        // Load products when page opens
+        window.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
 </body>
 </html>
