@@ -343,58 +343,39 @@
     </div>
 
     <script>
-        // Google Sheets API integration
-        async function fetchGoogleSheet() {
+        // Simple Google Sheets loader without API key
+        async function loadProducts() {
             const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc';
-            const API_KEY = 'AIzaSyCw5q7WEHaMyFg5mTd8XGvpIvPhrzPjQO4'; // Replace with your actual API key
-            const SHEET_NAME = 'Sheet1'; // Change to your sheet name
+            const SHEET_NAME = 'Sheet1'; // Change if your sheet has a different name
             
             try {
-                const response = await fetch(
-                    `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`
-                );
+                document.getElementById('loading-message').textContent = 'Loading products...';
+                
+                const response = await fetch(`https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`);
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
                 
-                const data = await response.json();
-                return data.values;
+                const products = await response.json();
+                
+                if (!products || products.length === 0) {
+                    throw new Error('No products found');
+                }
+                
+                displayProducts(products);
             } catch (error) {
-                console.error('Error fetching data:', error);
-                document.getElementById('loading-message').textContent = 'Error loading products. Please try again later.';
-                return null;
+                console.error('Error:', error);
+                document.getElementById('loading-message').textContent = 
+                    'Error loading products. Please check your internet connection and try again.';
             }
         }
-
-        // Process and display products
-        async function loadProducts() {
-            const sheetData = await fetchGoogleSheet();
-            if (!sheetData || sheetData.length < 2) {
-                document.getElementById('loading-message').textContent = 'No products available.';
-                return;
-            }
-            
-            // Remove loading message
-            document.getElementById('loading-message').remove();
-            
-            // Get headers (first row)
-            const headers = sheetData[0];
-            const rows = sheetData.slice(1);
-            
-            // Convert rows to objects with header keys
-            const products = rows.map(row => {
-                const obj = {};
-                headers.forEach((header, i) => {
-                    obj[header] = row[i] || '';
-                });
-                return obj;
-            });
-            
-            displayProducts(products);
-        }
-
+    
         function displayProducts(products) {
+            // Remove loading message
+            const loadingMsg = document.getElementById('loading-message');
+            if (loadingMsg) loadingMsg.remove();
+            
             let html = '';
             const placeholderUrl = 'https://via.placeholder.com/250x160?text=Product+Image';
             
@@ -406,48 +387,42 @@
                 }
                 categories[product.Category].push(product);
             });
-
-            // Generate HTML for each category
+    
+            // Generate HTML
             let categoryCount = 1;
-            for (const [category, products] of Object.entries(categories)) {
+            for (const [category, items] of Object.entries(categories)) {
                 html += `
                     <div class="product-category">
                         <h2>${categoryCount}. ${category}</h2>
                         <div class="product-list">
-                            ${products.map(product => {
-                                // Validate image URL
-                                let imageUrl = placeholderUrl;
-                                if (product['Image URL'] && 
-                                    (product['Image URL'].startsWith('http://') || 
-                                     product['Image URL'].startsWith('https://'))) {
-                                    imageUrl = product['Image URL'];
-                                }
-                                
-                                return `
+                            ${items.map(item => `
                                 <div class="product">
-                                    <img src="${imageUrl}" alt="${product['Product Name']}" 
+                                    <img src="${validateImageUrl(item['Image URL']) || placeholderUrl}" 
+                                         alt="${item['Product Name']}"
                                          onerror="this.src='${placeholderUrl}'">
-                                    <h3>${product['Product Name']}</h3>
+                                    <h3>${item['Product Name']}</h3>
                                     <div class="price-options">
-                                        ${product['Price (1kg)'] ? `<button class="price-btn">1kg: Ksh ${product['Price (1kg)']}</button>` : ''}
-                                        ${product['Price (½ Bag)'] ? `<button class="price-btn">½ Bag: Ksh ${product['Price (½ Bag)']}</button>` : ''}
-                                        ${product['Price (1 Bag)'] ? `<button class="price-btn">1 Bag: Ksh ${product['Price (1 Bag)']}</button>` : ''}
+                                        ${item['Price (1kg)'] ? `<button class="price-btn">1kg: Ksh ${item['Price (1kg)']}</button>` : ''}
+                                        ${item['Price (½ Bag)'] ? `<button class="price-btn">½ Bag: Ksh ${item['Price (½ Bag)']}</button>` : ''}
+                                        ${item['Price (1 Bag)'] ? `<button class="price-btn">1 Bag: Ksh ${item['Price (1 Bag)']}</button>` : ''}
                                     </div>
                                 </div>
-                                `;
-                            }).join('')}
+                            `).join('')}
                         </div>
                     </div>
                 `;
                 categoryCount++;
             }
-
-            document.getElementById('products-container').innerHTML += html;
-            
-            // Set current year in footer
+    
+            document.getElementById('products-container').innerHTML = html;
             document.getElementById('year').textContent = new Date().getFullYear();
         }
-
+    
+        function validateImageUrl(url) {
+            if (!url) return null;
+            return (url.startsWith('http://') || url.startsWith('https://')) ? url : null;
+        }
+    
         // Load products when page opens
         window.addEventListener('DOMContentLoaded', loadProducts);
     </script>
