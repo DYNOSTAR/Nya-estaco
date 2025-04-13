@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Nya-Estaco Investment</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>About Us - Nya-Estaco Stores - Premium Cereals & Provisions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
             --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
             --white: #FFFFFF;
-            --gray: #F5F5F5;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
         }
 
         * {
@@ -22,78 +22,142 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom,
-                var(--dark-blue) 0%,
-                var(--dark-blue) 10%,
-                var(--white) 20%,
-                var(--white) 80%,
-                var(--dark-blue) 90%,
-                var(--dark-blue) 100%);
-            min-height: 100vh;
-            color: var(--dark-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
         }
 
-        /* Header */
-        .header {
-            padding: 20px;
+        /* Compact Header */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
             background: var(--dark-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-name {
             color: var(--white);
             text-align: center;
         }
-        
-        .logo-container img {
-            height: 80px;
-            width: auto;
-            margin-bottom: 10px;
+
+        .brand-name h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+            font-weight: 600;
         }
 
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+        .brand-name p {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
-        
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Navigation */
         .nav {
-            background: var(--dark-blue);
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+            display: flex;
         }
 
         .nav ul {
+            display: flex;
             list-style: none;
-            padding: 0;
-            display: inline-flex;
             gap: 15px;
-            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
             padding: 8px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            transition: background 0.3s ease;
-            display: inline-block;
+            border-radius: 20px;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .nav ul li a:hover {
+        .nav ul li a:hover,
+        .nav ul li a.active {
             background: rgba(255, 255, 255, 0.2);
         }
 
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,139,0.8), rgba(0,0,139,0.8)), 
+                        url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #0d7bd4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
         /* About Content */
+        .about-section {
+            padding: 60px 5%;
+        }
+
         .about-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
         }
 
         .about-image {
@@ -103,259 +167,740 @@
 
         .about-image img {
             width: 100%;
-            max-width: 500px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: block;
-            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
         }
 
         .about-text {
-            flex: 2;
+            flex: 1;
             min-width: 300px;
         }
 
         .about-text h2 {
-            color: var(--primary-blue);
-            font-size: 1.8rem;
+            color: var(--dark-blue);
+            font-size: 2rem;
             margin-bottom: 20px;
-            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+            bottom: -10px;
+            left: 0;
         }
 
         .about-text p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #333;
+            color: #555;
+            margin-bottom: 20px;
             font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--light-gray);
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
         }
 
         /* Mission/Vision Section */
-        .mission-vision {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        .mission-section {
+            padding: 60px 5%;
+            background: var(--white);
+        }
+
+        .mission-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .card {
-            background: var(--white);
-            padding: 25px;
+        .mission-card {
+            background: var(--light-gray);
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .card h3 {
+        .mission-card h3 {
             color: var(--dark-blue);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-card p {
+            color: #555;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        .mission-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary-blue);
+        }
+
+        /* Team Section (Optional) */
+        .team-section {
+            padding: 60px 5%;
+            background: var(--light-gray);
             text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--primary-blue);
+        }
+
+        .team-card h4 {
+            color: var(--dark-blue);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .team-card p {
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(30, 144, 255, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            color: var(--dark-blue);
+            text-align: left;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: #777;
+            text-align: left;
+        }
+
+        /* Call to Action */
+        .cta {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-blue);
+            background: #0a0a2a;
             color: var(--white);
-            padding: 20px;
-            margin-top: 30px;
+            padding: 60px 5% 30px;
         }
-        
-        .footer-content {
+
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .footer-section h3 {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 15px;
         }
-        
-        .footer-section p {
-            margin: 5px 0;
+
+        .footer-logo p {
+            opacity: 0.8;
             font-size: 0.9rem;
+            margin-bottom: 20px;
         }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
-        
-        .social-icons a {
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
             color: var(--white);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: var(--secondary-blue);
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
         }
 
-        /* Responsive Adjustments */
+        .footer-links ul li a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.5rem;
+            .menu-toggle {
+                display: block;
             }
-            
-            .logo-container img {
-                height: 60px;
-            }
-            
-            .about-text h2 {
-                font-size: 1.5rem;
-            }
-            
-            .about-content {
+
+            .nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: var(--dark-blue);
                 flex-direction: column;
+                padding: 30px;
+                transition: all 0.3s ease;
+                z-index: 99;
             }
-            
-            .about-image {
-                margin-bottom: 20px;
+
+            .nav.active {
+                left: 0;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
             }
         }
-        
+
         @media (max-width: 480px) {
-            .nav ul {
-                gap: 8px;
+            .top-bar {
+                padding: 15px;
             }
-            
-            .nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+
+            .logo-container img {
+                height: 40px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+
+            .brand-name h1 {
+                font-size: 1.2rem;
+            }
+
+            .page-header {
+                padding: 60px 15px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+    <!-- Compact Header -->
+    <div class="top-bar">
+        <div class="logo-title">
+            <div class="logo-container">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+            </div>
+            <div class="brand-name">
+                <h1>Nya-Estaco Stores</h1>
+                <p>Quality meets Quantity</p>
+            </div>
         </div>
-        <h1>Nya-Estaco Stores</h1>
-        <p>Your Trusted Partner in Quality Products</p>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="About.html" class="active">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav">
-        <ul>
-            <li><a href="Index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="Services.html">Services</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Contact.html">Contact Us</a></li>
-        </ul>
-    </div>
+    <!-- Hero Section -->
+    <section class="page-header">
+        <h1>Our Story</h1>
+        <p>From humble beginnings to becoming a trusted name in cereals and grains provision</p>
+        <a href="Contact.html" class="btn btn-primary">Get in Touch</a>
+    </section>
 
     <!-- About Content -->
-    <div class="about-content">
-        <div class="about-image">
-            <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Store">
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="Black Circle Icon Business Logo.jpg" alt="Nya-Estaco Store">
+            </div>
+            <div class="about-text">
+                <h2>About Our Company</h2>
+                <p>
+                    Welcome to <strong>Nya-Estaco Stores</strong>, your premier destination for high-quality agricultural products.
+                    Established in 2010 with a commitment to excellence, we specialize in providing top-grade cereals, flour,
+                    grains, animal feeds, and spices to both wholesale and retail customers across Kenya.
+                </p>
+                <p>
+                    What began as a small grain store in Nairobi has grown into a trusted supplier for homes, restaurants,
+                    and institutions throughout the region. Our growth has been fueled by our unwavering dedication to quality
+                    and customer satisfaction.
+                </p>
+                <p>
+                    At Nya-Estaco, we understand the importance of quality nutrition for both families and livestock.
+                    That's why we maintain strict quality control measures at every stage, from sourcing to delivery.
+                    We work directly with trusted farmers to bring you the freshest products at competitive prices.
+                </p>
+            </div>
         </div>
-        <div class="about-text">
-            <h2>About Our Company</h2>
-            <p>
-                Welcome to <strong>Nya-Estaco Stores</strong>, your premier destination for high-quality agricultural products.
-                Established with a commitment to excellence, we specialize in providing top-grade cereals, flour,
-                grains, animal feeds, and spices to both wholesale and retail customers across Kenya.
-            </p>
-            <p>
-                With years of experience in the industry, we've built a reputation for reliability and quality.
-                Our products are carefully sourced from trusted farmers and producers, ensuring you receive only
-                the best for your home or business needs.
-            </p>
-            <p>
-                At Nya-Estaco, we understand the importance of quality nutrition for both families and livestock.
-                That's why we maintain strict quality control measures at every stage, from sourcing to delivery.
-            </p>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-title">
+            <h2>Our Core Values</h2>
+            <p>The principles that guide everything we do at Nya-Estaco</p>
         </div>
-    </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Quality First</h3>
+                <p>We never compromise on product standards, sourcing only the finest grains and ingredients</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Customer Trust</h3>
+                <p>Building long-term relationships through reliability and honest business practices</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-people-carry"></i>
+                </div>
+                <h3>Community Focus</h3>
+                <p>Supporting local farmers and contributing to food security in our communities</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Continuous Improvement</h3>
+                <p>Always seeking better ways to serve our customers and improve our processes</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Mission/Vision Section -->
-    <div class="mission-vision">
-        <div class="card">
-            <h3>Our Mission</h3>
-            <p>
-                To provide high-quality agricultural products at competitive prices while maintaining
-                exceptional customer service and building lasting relationships with our clients.
-                We strive to be the most trusted supplier in the region.
-            </p>
+    <section class="mission-section">
+        <div class="section-title">
+            <h2>Our Mission & Vision</h2>
+            <p>What drives us forward every day</p>
         </div>
-        <div class="card">
-            <h3>Our Vision</h3>
-            <p>
-                To become the leading provider of quality cereals and animal feeds in East Africa,
-                recognized for our reliability, quality products, and commitment to customer satisfaction.
-                We aim to support food security and agricultural development in our communities.
-            </p>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide high-quality agricultural products at competitive prices while maintaining
+                    exceptional customer service and building lasting relationships with our clients.
+                    We strive to be the most trusted supplier in the region through reliability,
+                    quality assurance, and community engagement.
+                </p>
+            </div>
+            <div class="mission-card">
+                <h3>Our Vision</h3>
+                <p>
+                    To become the leading provider of quality cereals and animal feeds in East Africa,
+                    recognized for our reliability, quality products, and commitment to customer satisfaction.
+                    We aim to support food security and agricultural development while expanding our reach
+                    to serve more communities across the region.
+                </p>
+            </div>
         </div>
-        <div class="card">
-            <h3>Our Values</h3>
-            <p>
-                <strong>Quality:</strong> We never compromise on product standards<br>
-                <strong>Integrity:</strong> Honest and transparent business practices<br>
-                <strong>Reliability:</strong> Consistent service you can depend on<br>
-                <strong>Community:</strong> Supporting local farmers and businesses
-            </p>
+    </section>
+
+    <!-- Team Section (Optional) -->
+    <!--
+    <section class="team-section">
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+            <p>The dedicated people behind Nya-Estaco's success</p>
         </div>
-    </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="team-img">
+                <h4>John Kamau</h4>
+                <p>Founder & CEO</p>
+                <p>15+ years in agricultural products</p>
+            </div>
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team Member" class="team-img">
+                <h4>Mary Wanjiku</h4>
+                <p>Operations Manager</p>
+                <p>Quality control specialist</p>
+            </div>
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member" class="team-img">
+                <h4>James Omondi</h4>
+                <p>Head of Distribution</p>
+                <p>Ensuring timely deliveries</p>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Hear from businesses and families who trust Nya-Estaco</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Nya-Estaco's maize flour has transformed our restaurant's ugali. It's consistently 
+                    high quality and gives us perfect results every time.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mama Nia</h4>
+                        <p>Restaurant Owner, Nairobi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    As a school, we order bulk grains monthly. Nya-Estaco never disappoints with 
+                    quality and timely deliveries.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mr. Otieno</h4>
+                        <p>Manager, Nairobi school</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Their animal feeds have improved our poultry productivity by 30%. The layers 
+                    mash is especially good.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Wanjiku K.</h4>
+                        <p>Poultry Farmer, Kiambu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Experience Quality?</h2>
+        <p>Join hundreds of satisfied customers who trust Nya-Estaco for their cereal and provision needs</p>
+        <a href="Contact.html" class="btn btn-primary">Get in Touch</a>
+    </section>
 
     <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Our Location</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
-                <p>Off Factory Street</p>
-                <p>P.O Box 1748-00100</p>
-                <p>Naivasha, Kenya</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
-                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+                <p>Your trusted partner for quality cereals, grains, and provisions in Kenya.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@nyaestaco_stores"><i class="fab fa-tiktok"></i></a>
                 </div>
-                <h3 style="margin-top: 20px;">Quick Links</h3>
-                <p><a href="products.html" style="color: var(--white);">Our Products</a></p>
-                <p><a href="Services.html" style="color: var(--white);">Our Services</a></p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="products.html">Flour</a></li>
+                    <li><a href="products.html">Grains</a></li>
+                    <li><a href="products.html">Cereals</a></li>
+                    <li><a href="products.html">Spices</a></li>
+                    <li><a href="products.html">Animal Feeds</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Old City Stadium, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> 0721 914 396</li>
+                    <li><i class="fas fa-envelope"></i> Nyaestacostores@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</li>
+                </ul>
             </div>
         </div>
-        
         <div class="copyright">
-            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+            <p>&copy; <span id="year"></span> Nya-Estaco Stores. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
