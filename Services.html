@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Nya-Estaco Investment</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Services - Nya-Estaco Stores - Premium Cereals & Provisions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
             --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
-            --light-blue: #E6F4F1;
             --white: #FFFFFF;
-            --gray: #F5F5F5;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
         }
 
         * {
@@ -23,337 +22,648 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom,
-                var(--dark-blue) 0%,
-                var(--dark-blue) 10%,
-                var(--white) 20%,
-                var(--white) 80%,
-                var(--dark-blue) 90%,
-                var(--dark-blue) 100%);
-            min-height: 100vh;
-            color: var(--dark-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
         }
 
-        /* Header */
-        .header {
-            padding: 20px;
+        /* Compact Header */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
             background: var(--dark-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-name {
             color: var(--white);
             text-align: center;
         }
-        
-        .logo-container img {
-            height: 80px;
-            width: auto;
-            margin-bottom: 10px;
+
+        .brand-name h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+            font-weight: 600;
         }
 
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+        .brand-name p {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
-        
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Navigation */
         .nav {
-            background: var(--dark-blue);
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+            display: flex;
         }
 
         .nav ul {
+            display: flex;
             list-style: none;
-            padding: 0;
-            display: inline-flex;
             gap: 15px;
-            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
             padding: 8px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            transition: background 0.3s ease;
-            display: inline-block;
+            border-radius: 20px;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .nav ul li a:hover {
+        .nav ul li a:hover,
+        .nav ul li a.active {
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Services Content */
-        .services-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .services-content h2 {
-            color: var(--primary-blue);
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,139,0.8), rgba(0,0,139,0.8)), 
+                        url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 5%;
             text-align: center;
-            margin: 25px 0;
-            font-size: 1.8rem;
         }
 
-        .service-item {
-            display: flex;
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #0d7bd4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
             margin-bottom: 40px;
+            padding: 0 5%;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
-        .service-item img {
-            width: 40%;
-            min-width: 300px;
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card img {
+            width: 100%;
             height: 250px;
             object-fit: cover;
         }
 
-        .service-text {
+        .service-content {
             padding: 25px;
-            flex: 1;
         }
 
-        .service-text h3 {
+        .service-content h3 {
             color: var(--dark-blue);
             font-size: 1.3rem;
             margin-bottom: 15px;
         }
 
-        .service-text p {
-            line-height: 1.6;
+        .service-content p {
             color: #555;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 5%;
+            background: var(--white);
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+
+        /* Call to Action */
+        .cta {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-blue);
+            background: #0a0a2a;
             color: var(--white);
-            padding: 20px;
-            margin-top: 30px;
+            padding: 60px 5% 30px;
         }
-        
-        .footer-content {
+
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .footer-section h3 {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 15px;
         }
-        
-        .footer-section p {
-            margin: 5px 0;
+
+        .footer-logo p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
         }
-        
-        .social-icons {
+
+        .footer-links ul li a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
-        
-        .social-icons a {
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
             color: var(--white);
-            font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
-        
-        .social-icons a:hover {
-            color: var(--secondary-blue);
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
         }
-        
+
         .copyright {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.9rem;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 900px) {
-            .service-item {
-                flex-direction: column;
-            }
-            
-            .service-item img {
-                width: 100%;
-                min-width: auto;
-                height: 200px;
-            }
-        }
-
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.5rem;
+            .menu-toggle {
+                display: block;
             }
-            
-            .logo-container img {
-                height: 60px;
+
+            .nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: var(--dark-blue);
+                flex-direction: column;
+                padding: 30px;
+                transition: all 0.3s ease;
+                z-index: 99;
             }
-            
-            .services-content h2 {
-                font-size: 1.5rem;
+
+            .nav.active {
+                left: 0;
             }
-            
-            .service-text {
+
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
                 padding: 15px;
             }
-            
-            .service-text h3 {
+
+            .logo-container img {
+                height: 40px;
+            }
+
+            .brand-name h1 {
                 font-size: 1.2rem;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .nav ul {
-                gap: 8px;
+
+            .page-header {
+                padding: 60px 15px;
             }
-            
-            .nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+
+            .page-header h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+    <!-- Compact Header -->
+    <div class="top-bar">
+        <div class="logo-title">
+            <div class="logo-container">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+            </div>
+            <div class="brand-name">
+                <h1>Nya-Estaco</h1>
+                <p>Stores</p>
+            </div>
         </div>
-        <h1>Nya-Estaco Stores</h1>
-        <p>Your Trusted Partner in Quality Products</p>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <ul>
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="Services.html" class="active">Services</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav">
-        <ul>
-            <li><a href="Index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="Services.html">Services</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Contact.html">Contact Us</a></li>
-        </ul>
-    </div>
-
-    <!-- Services Content -->
-    <div class="services-content">
-        <h2>Our Services</h2>
-
-        <!-- Muthokoi Processing -->
-        <div class="service-item">
-            <img src="muthokoi.jpeg" alt="Muthokoi Processing">
-            <div class="service-text">
-                <h3>Muthokoi Processing</h3>
-                <p>
-                    We specialize in processing muthokoi (hulled maize) to perfection.
-                    Our advanced machinery ensures the highest quality, making it ready
-                    for cooking or further processing. We handle both small and bulk orders
-                    with strict quality control measures.
-                </p>
-            </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Premium Services</h1>
+        <p>Quality processing and storage solutions for your agricultural products</p>
+        <div>
+            <a href="Contact.html" class="btn btn-primary">Contact Us</a>
+            <a href="products.html" class="btn btn-secondary">View Products</a>
         </div>
+    </section>
 
-        <!-- Milling -->
-        <div class="service-item">
-            <img src="mill.jpeg" alt="Milling">
-            <div class="service-text">
-                <h3>Milling Services</h3>
-                <p>
-                    Our modern milling equipment transforms grains into fine flour for various uses.
-                    We process maize, wheat, sorghum, and millet with consistent quality and texture.
-                    Custom grinding options available for specific flour textures.
-                </p>
-            </div>
-        </div>
-
-        <!-- Grains Cleaning -->
-        <div class="service-item">
-            <img src="grainclean.jpeg" alt="Grains Cleaning">
-            <div class="service-text">
-                <h3>Grains Cleaning</h3>
-                <p>
-                    Professional cleaning services including sieving, destoning, and sorting.
-                    Our multi-stage process removes dust, chaff, stones, and other impurities,
-                    ensuring clean and safe grains for consumption or storage. We handle all
-                    types of cereals and legumes.
-                </p>
-            </div>
-        </div>
-
-        <!-- Storage -->
-        <div class="service-item">
-            <img src="storage.jpeg" alt="Storage">
-            <div class="service-text">
-                <h3>Storage Solutions</h3>
-                <p>
-                    Climate-controlled storage facilities with pest control systems to keep
-                    your grains and products safe. We offer both short-term and long-term
-                    storage with flexible access options. Regular quality checks ensure
-                    your products remain in perfect condition.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Our Location</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
-                <p>Off Factory Street</p>
-                <p>P.O Box 1748-00100</p>
-                <p>Naivasha, Kenya</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
-                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-                <h3 style="margin-top: 20px;">Quick Links</h3>
-                <p><a href="products.html" style="color: var(--white);">Our Products</a></p>
-                <p><a href="Services.html" style="color: var(--white);">Our Services</a></p>
-            </div>
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Our Specialized Services</h2>
+            <p>We offer comprehensive solutions to meet all your agricultural processing needs</p>
         </div>
         
-        <div class="copyright">
-            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+        <div class="services-grid">
+            <!-- Muthokoi Processing -->
+            <div class="service-card">
+                <img src="muthokoi.jpeg" alt="Muthokoi Processing">
+                <div class="service-content">
+                    <h3>Muthokoi Processing</h3>
+                    <p>
+                        We specialize in processing muthokoi (hulled maize) to perfection.
+                        Our advanced machinery ensures the highest quality, making it ready
+                        for cooking or further processing. We handle both small and bulk orders
+                        with strict quality control measures.
+                    </p>
+                    <a href="Contact.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Milling -->
+            <div class="service-card">
+                <img src="mill.jpeg" alt="Milling">
+                <div class="service-content">
+                    <h3>Milling Services</h3>
+                    <p>
+                        Our modern milling equipment transforms grains into fine flour for various uses.
+                        We process maize, wheat, sorghum, and millet with consistent quality and texture.
+                        Custom grinding options available for specific flour textures.
+                    </p>
+                    <a href="Contact.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Grains Cleaning -->
+            <div class="service-card">
+                <img src="grainclean.jpeg" alt="Grains Cleaning">
+                <div class="service-content">
+                    <h3>Grains Cleaning</h3>
+                    <p>
+                        Professional cleaning services including sieving, destoning, and sorting.
+                        Our multi-stage process removes dust, chaff, stones, and other impurities,
+                        ensuring clean and safe grains for consumption or storage. We handle all
+                        types of cereals and legumes.
+                    </p>
+                    <a href="Contact.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Storage -->
+            <div class="service-card">
+                <img src="storage.jpeg" alt="Storage">
+                <div class="service-content">
+                    <h3>Storage Solutions</h3>
+                    <p>
+                        Climate-controlled storage facilities with pest control systems to keep
+                        your grains and products safe. We offer both short-term and long-term
+                        storage with flexible access options. Regular quality checks ensure
+                        your products remain in perfect condition.
+                    </p>
+                    <a href="Contact.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Delivery Services</h3>
+            <p>For bulk orders within Nairobi and Environs</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Quality Guaranteed</h3>
+            <p>Direct from trusted farmers and producers</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Call us anytime at 0721 914 396</p>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Experience Our Services?</h2>
+        <p>Join hundreds of satisfied customers who trust Nya-Estaco for their processing and storage needs</p>
+        <a href="Contact.html" class="btn btn-primary">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+                <p>Your trusted partner for quality cereals, grains, and provisions in Kenya.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="Services.html">Muthokoi Processing</a></li>
+                    <li><a href="Services.html">Milling Services</a></li>
+                    <li><a href="Services.html">Grains Cleaning</a></li>
+                    <li><a href="Services.html">Storage Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Old City Stadium, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> 0721 914 396</li>
+                    <li><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco Stores. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>

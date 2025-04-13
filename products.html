@@ -45,6 +45,7 @@
             background: var(--dark-blue);
             color: var(--white);
             text-align: center;
+            position: relative;
         }
         
         .logo-container img {
@@ -87,6 +88,46 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 30px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: var(--dark-blue);
+            padding: 15px;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .mobile-nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         /* Product Categories */
         .product-category {
             margin-bottom: 30px;
@@ -110,10 +151,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: transform 0.3s;
+            position: relative;
         }
         
         .product:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .product img {
@@ -123,12 +166,21 @@
             background-color: #f0f0f0;
             border-radius: 5px;
             margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .product:hover img {
+            transform: scale(1.03);
         }
 
         .product h3 {
             color: var(--dark-blue);
             margin: 10px 0;
             font-size: 1.2rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .price-options {
@@ -151,6 +203,19 @@
 
         .price-btn:hover {
             background: var(--dark-blue);
+        }
+
+        /* New: Product Badges */
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -246,18 +311,19 @@
                 padding: 6px;
                 font-size: 0.8rem;
             }
+
+            /* Show mobile menu button */
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            /* Hide desktop nav */
+            .nav {
+                display: none;
+            }
         }
         
         @media (max-width: 480px) {
-            .nav ul {
-                gap: 8px;
-            }
-            
-            .nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-            
             .product-list {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
@@ -278,10 +344,24 @@
         <h1>Nya-Estaco Stores</h1>
         <p>Cereal,Grains and Flour Provisions</p>
         <p>Wholesale and Retail</p>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 
-    <!-- Navigation -->
+    <!-- Desktop Navigation -->
     <div class="nav">
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="Index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
@@ -343,15 +423,19 @@
     </div>
 
     <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        });
+
         async function loadProducts() {
-            const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc'; // Replace if needed
-            const SHEET_NAME = 'Sheet1'; // Change if your sheet has a different name
-            const PLACEHOLDER_IMG = 'https://i.ibb.co/0jq7J2Y/image-placeholder.png'; // Backup image
-    
+            const SHEET_ID = '1Ebwmvbrp_Vy6puysf2cZ8MnmVdZ3ZmeJpJ1aiYPYDxc';
+            const SHEET_NAME = 'Sheet1';
+            const PLACEHOLDER_IMG = 'https://i.ibb.co/0jq7J2Y/image-placeholder.png';
+
             try {
                 document.getElementById('loading-message').textContent = 'Loading products...';
                 
-                // Fetch data from Google Sheets
                 const response = await fetch(`https://opensheet.elk.sh/${SHEET_ID}/${SHEET_NAME}`);
                 
                 if (!response.ok) {
@@ -374,7 +458,7 @@
     
         function displayProducts(products) {
             const container = document.getElementById('products-container');
-            container.innerHTML = ''; // Clear previous content
+            container.innerHTML = '<h1>Our Products</h1>'; // Reset with title
             
             const placeholderUrl = 'https://i.ibb.co/0jq7J2Y/image-placeholder.png';
             
@@ -384,7 +468,7 @@
                 acc[product.Category].push(product);
                 return acc;
             }, {});
-    
+
             // Generate HTML for each category
             Object.entries(categories).forEach(([category, items], index) => {
                 const categoryHTML = `
@@ -393,6 +477,7 @@
                         <div class="product-list">
                             ${items.map(item => `
                                 <div class="product">
+                                    ${item['Best Seller'] === 'TRUE' ? '<span class="product-badge">Bestseller</span>' : ''}
                                     <img src="${getValidImageUrl(item['Image URL']) || placeholderUrl}" 
                                          alt="${item['Product Name']}"
                                          onerror="this.src='${placeholderUrl}'">
@@ -409,7 +494,7 @@
                 `;
                 container.innerHTML += categoryHTML;
             });
-    
+
             document.getElementById('year').textContent = new Date().getFullYear();
         }
     
