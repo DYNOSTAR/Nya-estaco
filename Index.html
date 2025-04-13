@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Nya-Estaco Investment</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Nya-Estaco Stores - Premium Cereals & Provisions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Color Palette */
         :root {
             --primary-blue: #1E90FF;
             --secondary-blue: #87CEEB;
             --dark-blue: #00008B;
             --white: #FFFFFF;
-            --gray: #F5F5F5;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
         }
 
         * {
@@ -22,108 +22,230 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom,
-                var(--dark-blue) 0%,
-                var(--dark-blue) 10%,
-                var(--white) 20%,
-                var(--white) 80%,
-                var(--dark-blue) 90%,
-                var(--dark-blue) 100%);
-            min-height: 100vh;
-            color: var(--dark-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
         }
 
-        /* Header */
-        .header {
-            padding: 20px;
+        /* Compact Header */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
             background: var(--dark-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-name {
             color: var(--white);
             text-align: center;
         }
-        
-        .logo-container img {
-            height: 80px;
-            width: auto;
-            margin-bottom: 10px;
+
+        .brand-name h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+            font-weight: 600;
         }
 
-        .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+        .brand-name p {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
-        
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Navigation */
         .nav {
-            background: var(--dark-blue);
-            padding: 10px;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+            display: flex;
         }
 
         .nav ul {
+            display: flex;
             list-style: none;
-            padding: 0;
-            display: inline-flex;
             gap: 15px;
-            margin: 0 auto;
         }
 
         .nav ul li a {
             color: var(--white);
             text-decoration: none;
             padding: 8px 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            transition: background 0.3s ease;
-            display: inline-block;
+            border-radius: 20px;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .nav ul li a:hover {
+        .nav ul li a:hover,
+        .nav ul li a.active {
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,139,0.8), rgba(0,0,139,0.8)), 
+                        url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .page-title {
-            color: var(--primary-blue);
-            text-align: center;
-            margin: 25px 0;
-            font-size: 1.8rem;
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        .motto {
-            text-align: center;
-            color: var(--dark-blue);
+        .hero p {
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #0d7bd4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 60px 5%;
+            background: var(--white);
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
         }
 
         /* Product Categories */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 5%;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .product-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            padding: 0 5% 60px;
         }
 
         .category-card {
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .category-card img {
@@ -133,7 +255,7 @@
         }
 
         .category-content {
-            padding: 20px;
+            padding: 25px;
         }
 
         .category-content h3 {
@@ -144,251 +266,504 @@
 
         .category-content p {
             color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 0.95rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--primary-blue);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            font-size: 0.9rem;
+        /* Testimonials */
+        .testimonials {
+            background: var(--light-gray);
+            padding: 80px 5%;
+            text-align: center;
         }
 
-        .btn:hover {
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(30, 144, 255, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            color: var(--dark-blue);
+            text-align: left;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: #777;
+            text-align: left;
+        }
+
+        /* Call to Action */
+        .cta {
             background: var(--dark-blue);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-blue);
+            background: #0a0a2a;
             color: var(--white);
-            padding: 20px;
-            margin-top: 30px;
+            padding: 60px 5% 30px;
         }
-        
-        .footer-content {
+
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .footer-section h3 {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 15px;
         }
-        
-        .footer-section p {
-            margin: 5px 0;
+
+        .footer-logo p {
+            opacity: 0.8;
             font-size: 0.9rem;
+            margin-bottom: 20px;
         }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
-        
-        .social-icons a {
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-blue);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
             color: var(--white);
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: var(--secondary-blue);
-        }
-        
-        .copyright {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
             font-size: 0.9rem;
         }
 
-        /* Responsive Adjustments */
+        .footer-links ul li a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.5rem;
+            .menu-toggle {
+                display: block;
             }
-            
-            .logo-container img {
-                height: 60px;
+
+            .nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: var(--dark-blue);
+                flex-direction: column;
+                padding: 30px;
+                transition: all 0.3s ease;
+                z-index: 99;
             }
-            
-            .page-title {
-                font-size: 1.5rem;
+
+            .nav.active {
+                left: 0;
             }
-            
-            .category-card img {
-                height: 160px;
+
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
             }
         }
-        
+
         @media (max-width: 480px) {
-            .nav ul {
-                gap: 8px;
+            .top-bar {
+                padding: 15px;
             }
-            
-            .nav ul li a {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+
+            .logo-container img {
+                height: 40px;
             }
-            
-            .product-categories {
+
+            .brand-name h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .features {
                 grid-template-columns: 1fr;
             }
-            
-            .footer-content {
+
+            .product-categories {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+    <!-- Compact Header -->
+    <div class="top-bar">
+        <div class="logo-title">
+            <div class="logo-container">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+            </div>
+            <div class="brand-name">
+                <h1>Nya-Estaco</h1>
+                <p>Stores</p>
+            </div>
         </div>
-        <h1>Nya-Estaco Stores</h1>
-        <p>For WholeSale and Retail Provisions</p>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <ul>
+                <li><a href="Index.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="Services.html">Services</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav">
-        <ul>
-            <li><a href="Index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="Services.html">Services</a></li>
-            <li><a href="About.html">About</a></li>
-            <li><a href="Contact.html">Contact Us</a></li>
-        </ul>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Cereals & Provisions</h1>
+            <p>Quality wholesale and retail products for homes and businesses across Kenya</p>
+            <div>
+                <a href="products.html" class="btn btn-primary">Shop Products</a>
+                <a href="Contact.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <h1 class="page-title">Welcome to Nya-Estaco Stores</h1>
-        <p class="motto">Your Trusted Partner in Quality Products</p>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Delivery Services</h3>
+            <p>For bulk orders within Nairobi and Environs</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Quality Guaranteed</h3>
+            <p>Direct from trusted farmers and producers</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Call us anytime at 0721 914 396</p>
+        </div>
+    </section>
 
-        <!-- Product Categories -->
+    <!-- Product Categories -->
+    <section>
+        <div class="section-title">
+            <h2>Our Product Categories</h2>
+            <p>Discover our wide range of high-quality products for all your needs</p>
+        </div>
         <div class="product-categories">
-            <!-- Flour -->
             <div class="category-card">
-                <img src="Flou pro.jpeg" alt="Flour Products">
+                <img src="Homemade Cake Flour.jpeg" alt="Flour Products">
                 <div class="category-content">
                     <h3>Premium Flour</h3>
                     <p>
-                        Discover our range of high-quality flours, including wheat, maize, millet, 
-                        sorghum and cassava flour. Perfect for baking and cooking, our flours are 
-                        finely milled for exceptional results.
+                        Finely milled wheat, maize, millet, sorghum and cassava flour for all your baking needs. 
+                        Consistent quality for perfect results every time.
                     </p>
-                    <a href="products.html" class="btn">Explore Flour</a>
+                    <a href="products.html" class="btn btn-primary">Explore Flour</a>
                 </div>
             </div>
-
-            <!-- Grains -->
             <div class="category-card">
-                <img src="Grain pro.jpeg" alt="Grains Products">
+                <img src="cereal.jpg" alt="Grains Products">
                 <div class="category-content">
                     <h3>Quality Grains</h3>
                     <p>
-                        From maize to millet, sorghum and rice, our grains are carefully selected
-                        and cleaned for maximum freshness and nutrition. Ideal for
-                        households and businesses.
+                        Carefully selected maize, millet, sorghum and rice. Perfect for households, 
+                        restaurants, and institutions.
                     </p>
-                    <a href="products.html" class="btn">Explore Grains</a>
+                    <a href="products.html" class="btn btn-primary">Explore Grains</a>
                 </div>
             </div>
-
-            <!-- Cereals -->
             <div class="category-card">
                 <img src="Cereal pro.jpeg" alt="Cereals Products">
                 <div class="category-content">
-                    <h3>Sorted/Unsorted Cereals</h3>
+                    <h3>Wholesome Cereals</h3>
                     <p>
-                        Start your day with our wholesome cereals. We offer a variety
-                        of options, including Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde
-                        and more.
+                        Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde and more. 
+                        Sorted and cleaned for your convenience.
                     </p>
-                    <a href="products.html" class="btn">Explore Cereals</a>
-                </div>
-            </div>
-
-            <!-- Spices -->
-            <div class="category-card">
-                <img src="spices pro.jpeg" alt="Spices Products">
-                <div class="category-content">
-                    <h3>Authentic Spices</h3>
-                    <p>
-                        Enhance your meals with our premium spices. From turmeric to
-                        ginger and chili, our spices are sourced for their rich flavor
-                        and aroma.
-                    </p>
-                    <a href="products.html" class="btn">Explore Spices</a>
-                </div>
-            </div>
-
-            <!-- Animal Feeds -->
-            <div class="category-card">
-                <img src="animal feeds pro.jpeg" alt="Animal Feeds">
-                <div class="category-content">
-                    <h3>Animal Feeds</h3>
-                    <p>
-                        We provide high-quality animal feeds for poultry, dairy, and
-                        livestock. Our feeds are formulated for optimal growth and
-                        productivity.
-                    </p>
-                    <a href="products.html" class="btn">Explore Feeds</a>
+                    <a href="products.html" class="btn btn-primary">Explore Cereals</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Hear from businesses and families who trust Nya-Estaco</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Nya-Estaco's maize flour has transformed our restaurant's ugali. It's consistently 
+                    high quality and gives us perfect results every time.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mama Nia</h4>
+                        <p>Restaurant Owner, Nairobi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    As a school, we order bulk grains monthly. Nya-Estaco never disappoints with 
+                    quality and timely deliveries.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mr. Otieno</h4>
+                        <p>Manager, Nairobi school</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Their animal feeds have improved our poultry productivity by 30%. The layers 
+                    mash is especially good.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Wanjiku K.</h4>
+                        <p>Poultry Farmer, Kiambu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Experience Quality?</h2>
+        <p>Join hundreds of satisfied customers who trust Nya-Estaco for their cereal and provision needs</p>
+        <a href="Contact.html" class="btn btn-primary">Get in Touch</a>
+    </section>
 
     <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Our Location</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Old City Stadium</p>
-                <p>Off Factory Street</p>
-                <p>P.O Box 1748-00100</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +254 721 914 396</p>
-                <p><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="Black Circle Icon Business Logo (1000 x 250 px).png" alt="Nya-Estaco Logo">
+                <p>Your trusted partner for quality cereals, grains, and provisions in Kenya.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="products.html">Flour</a></li>
+                    <li><a href="products.html">Grains</a></li>
+                    <li><a href="products.html">Cereals</a></li>
+                    <li><a href="products.html">Spices</a></li>
+                    <li><a href="products.html">Animal Feeds</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Old City Stadium, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> 0721 914 396</li>
+                    <li><i class="fas fa-envelope"></i> Nya-estaco@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</li>
+                </ul>
+            </div>
         </div>
-        
         <div class="copyright">
-            <p>&copy; <span id="year"></span> Nya-Estaco.com. All rights reserved.</p>
+            <p>&copy; <span id="year"></span> Nya-Estaco Stores. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </body>
 </html>
