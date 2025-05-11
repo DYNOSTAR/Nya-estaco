@@ -1,0 +1,71 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<section class="contact-section" id="contact">
+    <div class="section-title">
+        <h2>How Can We Help You?</h2>
+        <p>Choose your preferred method of contact below</p>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Call Us</h3>
+            <p>Speak directly with our customer service team during business hours</p>
+            <p><strong>+254 721 914 396</strong></p>
+            <a href="tel:+254721914396" class="contact-link">Call Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email Us</h3>
+            <p>Send us a message and we'll respond within 24 hours</p>
+            <p><strong>Nyaestacostores@gmail.com</strong></p>
+            <a href="mailto:Nyaestacostores@gmail.com" class="contact-link">Email Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Visit Us</h3>
+            <p>Our store location in Nairobi</p>
+            <p><strong>Old City Stadium, Off Factory Street</strong></p>
+            <a href="#map" class="contact-link">View Map <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section -->
+<section class="map-section" id="map">
+    <div class="section-title">
+        <h2>Our Location</h2>
+        <p>Visit our store in Nairobi for personal service</p>
+    </div>
+
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8085999999997!2d36.821545!3d-1.286582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d664f5a9a7%3A0x1e3b9b5d9b5d9b5d!2sOld%20City%20Stadium!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href=https://www.google.com/maps/place/NyaEstacoStores/@-1.2927289,36.8356704,1772m/data=!3m1!1e3!4m6!3m5!1s0x182f11fd578e0e31:0x697c05e54873e000!8m2!3d-1.2930814!4d36.8402197!16s%2Fg%2F11x7xdrrq9?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" class="btn btn-primary">Get Directions</a>
+    </div>
+</section>
+
+<!-- Business Hours -->
+<section class="hours-section">
+    <div class="hours-card">
+        <h3><i class="far fa-clock"></i> Business Hours</h3>
+        <p><strong>Sunday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+        <p><strong>Saturday:</strong> Closed</p>
+        <p>Closed on public holidays</p>
+    </div>
+</section>
+{% endblock %}

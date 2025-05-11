@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nya-Estaco Stores - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Compact Header -->
+<!-- In your header section -->
+    <div class="top-bar">
+        <div class="logo-title">
+            <div class="logo-container">
+                <img src="{% static 'images/logo.png' %}" alt="Nya-Estaco Logo">
+            </div>
+            <div class="brand-name">
+                <h1>Nya-Estaco Stores</h1>
+                <p>Quality meets Quantity</p>
+            </div>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav" id="mainNav">
+            <ul>
+                <li><a href="{% url 'store:home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'store:product_list' %}" class="{% if 'products' in request.path %}active{% endif %}">Products</a></li>
+                <li><a href="{% url 'store:about' %}" class="{% if 'about' in request.path %}active{% endif %}">About</a></li>
+                <li><a href="{% url 'store:contact' %}" class="{% if 'contact' in request.path %}active{% endif %}">Contact</a></li>
+                <!-- Add this cart link -->
+                <li class="cart-link-item">
+                    <a href="{% url 'cart:cart_detail' %}" class="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">
+                            {% with total_items=cart|length %}
+                                {% if total_items > 0 %}
+                                    {{ total_items }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endwith %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="{% static 'images/products/logo.png' %}" alt="Nya-Estaco Logo">
+                <p>Your trusted partner for quality cereals, grains, and flour in Kenya.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="www.tiktok.com/@nyaestaco_stores"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'store:home' %}">Home</a></li>
+                    <li><a href="{% url 'store:products' %}">Products</a></li>
+                    <li><a href="{% url 'store:about' %}">About Us</a></li>
+                    <li><a href="{% url 'store:contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="{% url 'store:products' %}?category=flour">Flour</a></li>
+                    <li><a href="{% url 'store:products' %}?category=grains">Grains</a></li>
+                    <li><a href="{% url 'store:products' %}?category=cereals">Cereals</a></li>
+                    <li><a href="{% url 'store:products' %}?category=spices">Spices</a></li>
+                    <li><a href="{% url 'store:products' %}?category=feeds">Animal Feeds</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Old City Stadium, Nairobi</li>
+                    <li><i class="fas fa-phone"></i> 0721 914 396</li>
+                    <li><i class="fas fa-envelope"></i> Nyaestacostores@gmail.com</li>
+                    <li><i class="fas fa-clock"></i> Sun-Fri: 8AM - 5PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="year"></span> Nya-Estaco Stores. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

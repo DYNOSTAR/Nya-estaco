@@ -1,0 +1,46 @@
+{% extends "store/base.html" %}
+{% load humanize %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Categories</h3>
+            <ul class="list-group">
+                <li class="list-group-item {% if not category %}active{% endif %}">
+                    <a href="{% url 'store:product_list' %}">All</a>
+                </li>
+                {% for c in categories %}
+                    <li class="list-group-item {% if category.slug == c.slug %}active{% endif %}">
+                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image %}{{ product.image.url }}{% endif %}" 
+                                     class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-dark">{{ product.name }}</a>
+                                </h5>
+                                <p class="card-text">KSh {{ product.price|intcomma }} @ 1bag</p>
+                                <a href="{{ product.get_absolute_url }}" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

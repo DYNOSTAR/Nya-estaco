@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h2>Nyaestaco Stores - Order #{{ order.id }}</h2>
+    <p>Thank you for your order!</p>
+    
+    <h3>Order Details</h3>
+    <p><strong>Customer:</strong> {{ order.customer_name }}</p>
+    <p><strong>Email:</strong> {{ order.customer_email }}</p>
+    <p><strong>Phone:</strong> {{ order.customer_phone }}</p>
+    {% if order.delivery %}
+        <p><strong>Delivery Address:</strong> {{ order.address }}</p>
+    {% endif %}
+    {% if order.note %}
+        <p><strong>Special Instructions:</strong> {{ order.note }}</p>
+    {% endif %}
+    
+    <h3>Order Items</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>KSh {{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>KSh {{ item.get_cost }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td>KSh {{ order.get_total_cost }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <p>
+        <strong>Store Location:</strong><br>
+        Nyaestaco Stores<br>
+        Old City Stadium, Off Lusaka Rd<br>
+        Nairobi
+    </p>
+</body>
+</html>

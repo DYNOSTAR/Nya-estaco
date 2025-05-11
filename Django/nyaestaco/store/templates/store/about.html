@@ -1,0 +1,182 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,139,0.8), rgba(0,0,139,0.8)), url('{% static 'images/about-bg.jpg' %}');">
+        <div class="hero-content">
+            <h1>About Nya-Estaco Stores</h1>
+            <p>Your trusted partner for quality cereals and provisions</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="about-text">
+            <h2>About Our Company</h2>
+            <p>
+                Welcome to <strong>Nya-Estaco Stores</strong>, your premier destination for high-quality agricultural products.
+                Established in 2010 with a commitment to excellence, we specialize in providing top-grade cereals, flour,
+                grains, animal feeds, and spices to both wholesale and retail customers across Kenya.
+            </p>
+            <p>
+                What began as a small grain store in Nairobi has grown into a trusted supplier for homes, restaurants,
+                and institutions throughout the region. Our growth has been fueled by our unwavering dedication to quality
+                and customer satisfaction.
+            </p>
+            <p>
+                At Nya-Estaco, we understand the importance of quality nutrition for both families and livestock.
+                That's why we maintain strict quality control measures at every stage, from sourcing to delivery.
+                We work directly with trusted farmers to bring you the freshest products at competitive prices.
+            </p>
+        </div>
+    </section>
+    <section class="values-section">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do at Nya-Estaco</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>We never compromise on product standards, sourcing only the finest grains and ingredients</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Customer Trust</h3>
+                    <p>Building long-term relationships through reliability and honest business practices</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-people-carry"></i>
+                    </div>
+                    <h3>Community Focus</h3>
+                    <p>Supporting local farmers and contributing to food security in our communities</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Continuous Improvement</h3>
+                    <p>Always seeking better ways to serve our customers and improve our processes</p>
+                </div>
+            </div>
+    </section>
+        <!-- Add other about sections similarly -->
+     <!-- Mission/Vision Section -->
+     <section class="mission-section">
+        <div class="section-title">
+            <h2>Our Mission & Vision</h2>
+            <p>What drives us forward every day</p>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide high-quality agricultural products at competitive prices while maintaining
+                    exceptional customer service and building lasting relationships with our clients.
+                    We strive to be the most trusted supplier in the region through reliability,
+                    quality assurance, and community engagement.
+                </p>
+            </div>
+            <div class="mission-card">
+                <h3>Our Vision</h3>
+                <p>
+                    To become the leading provider of quality cereals and animal feeds in East Africa,
+                    recognized for our reliability, quality products, and commitment to customer satisfaction.
+                    We aim to support food security and agricultural development while expanding our reach
+                    to serve more communities across the region.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section (Optional) -->
+    <section class="team-section">
+        <div class="section-title">
+            <h2>Meet Our Team</h2>
+            <p>The dedicated people behind Nya-Estaco's success</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="team-img">
+                <h4>MUHORO</h4>
+                <p>Founder & CEO</p>
+                <p>15+ years in agricultural products</p>
+            </div>
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team Member" class="team-img">
+                <h4>MUHORO Njeri</h4>
+                <p>Operations Manager</p>
+                <p>Quality control specialist</p>
+            </div>
+            <div class="team-card">
+                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member" class="team-img">
+                <h4>Ndirangu</h4>
+                <p>Head of Distribution</p>
+                <p>Ensuring timely deliveries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>What Our Customers Say</h2>
+            <p>Hear from businesses and families who trust Nya-Estaco</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Nya-Estaco's maize flour has transformed our restaurant's ugali. It's consistently 
+                    high quality and gives us perfect results every time.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mama Nia</h4>
+                        <p>Restaurant Owner, Nairobi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    As a school, we order bulk grains monthly. Nya-Estaco never disappoints with 
+                    quality and timely deliveries.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Mr. Otieno</h4>
+                        <p>Manager, Nairobi school</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    Their animal feeds have improved our poultry productivity by 30%. The layers 
+                    mash is especially good.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer" class="author-img">
+                    <div class="author-info">
+                        <h4>Wanjiku K.</h4>
+                        <p>Poultry Farmer, Kiambu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Experience Quality?</h2>
+        <p>Join hundreds of satisfied customers who trust Nya-Estaco for their cereal and provision needs</p>
+        <a href="Contact.html" class="btn btn-primary">Get in Touch</a>
+    </section>
+{% endblock %}

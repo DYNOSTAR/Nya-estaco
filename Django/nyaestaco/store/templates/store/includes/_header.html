@@ -1,0 +1,20 @@
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <h1>Nyaestaco<span>Stores</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'store:home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'store:product_list' %}" class="{% if 'products' in request.path %}active{% endif %}">Products</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="{% url 'store:order_create' %}" class="cart-link">
+                        Cart <span class="cart-count">{{ cart|length }}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

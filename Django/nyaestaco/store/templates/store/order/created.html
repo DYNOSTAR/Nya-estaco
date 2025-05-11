@@ -1,0 +1,21 @@
+{% extends "store/base.html" %}
+
+{% block title %}Order Placed{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="display-4">Thank you!</h1>
+        <p class="lead">Your order has been successfully placed.</p>
+        <div class="alert alert-success">
+            <strong>Order number:</strong> {{ order.id }}
+        </div>
+        <p>
+            We've sent a confirmation email to <strong>{{ order.customer_email }}</strong>.
+            Our team will contact you shortly to confirm your order.
+        </p>
+        <p>
+            For bulk orders requiring delivery, we'll contact you to arrange delivery details.
+        </p>
+        <a href="/" class="btn btn-primary">Continue Shopping</a>
+    </div>
+{% endblock %}

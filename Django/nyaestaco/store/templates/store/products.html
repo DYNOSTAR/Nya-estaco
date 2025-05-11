@@ -1,0 +1,80 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Our Products{% endif %}
+{% endblock %}
+
+{% block content %}
+    <!-- Product Categories Navigation -->
+    <div class="category-nav">
+        <div class="container">
+            <h3>Browse Categories:</h3>
+            <ul>
+                <li {% if not category %}class="active"{% endif %}>
+                    <a href="{% url 'store:product_list' %}">All Products</a>
+                </li>
+                {% for c in categories %}
+                <li {% if category.slug == c.slug %}class="active"{% endif %}>
+                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Product Listing -->
+    <div class="product-listing">
+        <div class="container">
+            <h1>{% if category %}{{ category.name }}{% else %}Our Products{% endif %}</h1>
+            
+            <div class="product-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    <a href="{{ product.get_absolute_url }}">
+                        <div class="product-image">
+                            {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                            <img src="{% static 'store/images/default-product.jpg' %}" alt="No image">
+                            {% endif %}
+
+                            {% if not product.available %}
+                            <div class="out-of-stock">Out of Stock</div>
+                            {% endif %}
+                        </div>
+                        <div class="product-info">
+                            <h3>{{ product.name }}</h3>
+                            <p class="category">{{ product.category.name }}</p>
+                            <p class="price">KSh {{ product.price }}</p>
+                        </div>
+                    </a>
+                    <form action="{% url 'store:cart_add' product.id %}" method="post" class="add-to-cart-form">
+                        {% csrf_token %}
+                        <div class="quantity-selector">
+                            <button type="button" class="quantity-btn minus">-</button>
+                            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                            <button type="button" class="quantity-btn plus">+</button>
+                        </div>
+                        <button type="submit" class="add-to-cart-btn" {% if not product.available %}disabled{% endif %}>
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="featured-grid">
+                {% for product in featured_products %}
+                <!-- Similar product card structure -->
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

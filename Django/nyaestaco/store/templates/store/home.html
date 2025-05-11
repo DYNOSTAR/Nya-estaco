@@ -1,0 +1,92 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Premium Cereals & Provisions{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Cereals & Provisions</h1>
+            <p>Quality wholesale and retail products for homes and businesses across Kenya</p>
+            <div>
+                <a href="{% url 'store:products' %}" class="btn btn-primary">Shop Products</a>
+                <a href="{% url 'store:contact' %}" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section>
+        <div class="section-title">
+            <h2>Our Product Categories</h2>
+            <p>Discover our wide range of high-quality products for all your needs</p>
+        </div>
+        <div class="product-categories">
+            <div class="category-card">
+                <img src="{% static 'images/products/Flou pro.jpeg' %}" alt="Flour Products">
+                <div class="category-content">
+                    <h3>Premium Flour</h3>
+                    <p>
+                        Finely milled wheat, maize, millet, sorghum and cassava flour for all your baking needs. 
+                        Consistent quality for perfect results every time.
+                    </p>
+                    <a href="{% url 'store:products' %}?category=flour" class="btn btn-primary">Explore Flour</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'images/products/grains.jpg' %}" alt="Grains Products">
+                <div class="category-content">
+                    <h3>Quality Grains</h3>
+                    <p>
+                        Carefully selected maize, millet, sorghum and rice. Perfect for households, 
+                        restaurants, and institutions.
+                    </p>
+                    <a href="{% url 'store:products' %}?category=grains" class="btn btn-primary">Explore Grains</a>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="{% static 'images/products/cereals.jpg' %}" alt="Cereals Products">
+                <div class="category-content">
+                    <h3>Wholesome Cereals</h3>
+                    <p>
+                        Nyayo beans, Yellow beans, Njahi, Ndengu, Kunde and more. 
+                        Sorted and cleaned for your convenience.
+                    </p>
+                    <a href="{% url 'store:products' %}?category=cereals" class="btn btn-primary">Explore Cereals</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Delivery Services</h3>
+            <p>For bulk orders within Nairobi and Environs</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Quality Guaranteed</h3>
+            <p>Direct from trusted farmers and producers</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Call us anytime at 0721 914 396</p>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Experience Quality?</h2>
+        <p>Join hundreds of satisfied customers who trust Nya-Estaco for their cereal and provision needs</p>
+        <a href="{% url 'store:contact' %}" class="btn btn-primary">Get in Touch</a>
+    </section>
+{% endblock %}

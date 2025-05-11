@@ -1,0 +1,57 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid">
+                <div class="product-images">
+                    <div class="main-image">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </div>
+                    <!-- Thumbnails would go here -->
+                </div>
+                
+                <div class="product-info">
+                    <h1>{{ product.name }}</h1>
+                    <p class="category">{{ product.category.name }}</p>
+                    <p class="price">KSh {{ product.price }} per bag</p>
+                    
+                    <div class="product-description">
+                        <h3>Description</h3>
+                        <p>{{ product.description }}</p>
+                    </div>
+                    
+                    <form action="{% url 'store:cart_add' product.id %}" method="post" class="add-to-cart-form">
+                        {% csrf_token %}
+                        <div class="quantity-selector">
+                            <button type="button" class="quantity-btn minus">-</button>
+                            <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                            <button type="button" class="quantity-btn plus">+</button>
+                        </div>
+                        <button type="submit" class="add-to-cart-btn" {% if not product.available %}disabled{% endif %}>
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </form>
+                    
+                    <div class="product-meta">
+                        <p><strong>Availability:</strong> {% if product.available %}In Stock{% else %}Out of Stock{% endif %}</p>
+                        <p><strong>Category:</strong> <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2>You May Also Like</h2>
+                <div class="related-grid">
+                    {% for product in related_products %}
+                    <!-- Similar product card structure -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "store/base.html" %}
+{% load humanize %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{% if product.image %}{{ product.image.url }}{% endif %}" 
+                 class="img-fluid rounded" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-7">
+            <h1>{{ product.name }}</h1>
+            <h2 class="text-primary">KSh {{ product.price|intcomma }}</h2>
+            <p>{{ product.description }}</p>
+            <p>
+                {% if product.available %}
+                    <span class="badge bg-success">Available</span>
+                {% else %}
+                    <span class="badge bg-danger">Out of Stock</span>
+                {% endif %}
+            </p>
+            <div class="mt-4">
+                <h4>Place Order</h4>
+                <p>Call us at +254 721 914 396 to place your order</p>
+                <p class="text-muted">Delivery available for bulk orders in Nairobi metropolitan area</p>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <h4>Order Now</h4>
+        <form action="{% url 'store:order_create' %}" method="post" class="mb-3">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <div class="input-group mb-3" style="max-width: 200px;">
+                <input type="number" name="quantity" value="1" min="1" class="form-control">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </div>
+        </form>
+        <p class="text-muted">Or call us at +254 721 914 396 to place your order</p>
+    </div>
+{% endblock %}
